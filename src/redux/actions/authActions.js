@@ -4,6 +4,7 @@ import {
 	LOGIN_SUCCESS,
 	REGISTER_SUCCESS,
 	FETCH_USER,
+	LOGOUT_SUCCESS,
 } from '../types';
 
 export const register = (newUser) => async (dispatch) => {
@@ -66,6 +67,9 @@ export const logout = () => async (dispatch) => {
 	try {
 		const res = await instance.delete('auth/logout');
 		console.log(res.data);
+		dispatch({
+			type: LOGOUT_SUCCESS,
+		});
 	} catch (err) {
 		console.log(err);
 	}

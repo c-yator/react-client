@@ -31,7 +31,7 @@ function Login() {
 			<FormGroup>
 				<Label for='email'>Email</Label>
 				<Input
-					invalid
+					{...(errors.email && { invalid: true })}
 					type='email'
 					name='email'
 					id='email'
@@ -50,7 +50,7 @@ function Login() {
 			<FormGroup>
 				<Label for='password'>Password</Label>
 				<Input
-					invalid
+					{...(errors.password && { invalid: true })}
 					type='password'
 					name='password'
 					id='password'

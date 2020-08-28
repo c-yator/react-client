@@ -34,11 +34,10 @@ function ProtectedAuthLinks() {
 					Favorites
 				</DropdownItem>
 				<DropdownItem divider />
-				<DropdownItem>
-					<Button className='w-100' onClick={() => dispatch(logout())}>
-						Log out
-					</Button>
-				</DropdownItem>
+
+				<Button className='w-100' onClick={() => dispatch(logout())}>
+					Log out
+				</Button>
 			</DropdownMenu>
 		</UncontrolledDropdown>
 	);
