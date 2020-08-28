@@ -1,6 +1,6 @@
 import {
 	FETCH_USER,
-	AUTH_USER,
+	REGISTER_SUCCESS,
 	LOGIN_SUCCESS,
 	REFRESH_TOKEN_SUCCESS,
 	LOGOUT_SUCCESS,
@@ -14,14 +14,13 @@ const iniialState = {
 };
 
 const authReducer = (state = iniialState, action) => {
-	switch (action.types) {
-		case AUTH_USER:
-			return { ...state, isAuthenticated: true };
+	switch (action.type) {
 		case FETCH_USER:
 			return { ...state, user: action.payload, userLoading: false };
+		case REGISTER_SUCCESS:
 		case LOGIN_SUCCESS:
 		case REFRESH_TOKEN_SUCCESS:
-			return { ...state, token: action.payload };
+			return { ...state, token: action.payload, isAuthenticated: true };
 		case LOGOUT_SUCCESS:
 			return {
 				...state,
