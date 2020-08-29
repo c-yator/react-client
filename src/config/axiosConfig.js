@@ -3,10 +3,6 @@ import store from '../redux/store';
 
 const instance = axios.create();
 
-const {
-	authState: { token },
-} = store.getState();
-
 instance.interceptors.request.use((config) => {
 	if (
 		config.method === 'POST' ||
@@ -14,6 +10,10 @@ instance.interceptors.request.use((config) => {
 		config.method === 'PUT'
 	)
 		config.headers['Content-Type'] = 'application/json;charset=utf-8';
+
+	const {
+		authState: { token },
+	} = store.getState();
 
 	if (token) config.headers.Authorization = `Bearer ${token}`;
 

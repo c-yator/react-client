@@ -7,6 +7,7 @@ import {
 	DropdownMenu,
 	DropdownItem,
 	Button,
+	Spinner,
 } from 'reactstrap';
 import { logout, fetchUser } from '../../redux/actions/authActions';
 
@@ -21,7 +22,13 @@ function ProtectedAuthLinks() {
 	return (
 		<UncontrolledDropdown nav inNavbar>
 			<DropdownToggle nav caret>
-				{authState.user.username ? authState.user.username : 'Account'}
+				{authState.userLoading ? (
+					<Spinner size='sm' />
+				) : authState.user.username ? (
+					authState.user.username
+				) : (
+					'Account'
+				)}
 			</DropdownToggle>
 			<DropdownMenu right>
 				<DropdownItem tag={Link} to='/profile'>

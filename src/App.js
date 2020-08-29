@@ -25,8 +25,9 @@ function App() {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		const { token } = authState;
-
-		!token && dispatch(refresh());
+		if (!token) {
+			dispatch(refresh());
+		}
 	}, [dispatch, authState]);
 
 	return (

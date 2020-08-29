@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { TabContent, Nav, NavItem, NavLink } from 'reactstrap';
+import { TabContent, Nav, NavItem, NavLink, Spinner } from 'reactstrap';
 import classnames from 'classnames';
 
 import ProductTabPane from './ProductTabPane';
 
 const ProductNav = () => {
+	const productState = useSelector((state) => state.productState);
 	const [activeTab, setActiveTab] = useState('1');
 	const [categories] = useState([
 		{ id: '1', name: 'fruits' },
@@ -28,13 +29,17 @@ const ProductNav = () => {
 								toggle(category.id);
 							}}
 						>
-							{category.name}
+							<span className='text-capitalize'>{category.name}</span>
 						</NavLink>
 					</NavItem>
 				))}
 			</Nav>
 			<TabContent activeTab={activeTab}>
-				<ProductTabPane categories={categories} />
+				{productState.allProducts.isLoading ? (
+					<Spinner className='d-block mx-auto mt-5' />
+				) : (
+					<ProductTabPane categories={categories} />
+				)}
 			</TabContent>
 		</div>
 	);
