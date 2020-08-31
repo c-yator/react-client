@@ -63,13 +63,16 @@ export const fetchUser = () => async (dispatch) => {
 	}
 };
 
-export const logout = () => async (dispatch) => {
+export const logout = (history) => async (dispatch) => {
 	try {
 		const res = await instance.delete('auth/logout');
-		console.log(res.data);
-		dispatch({
-			type: LOGOUT_SUCCESS,
-		});
+		console.log(res.status);
+		if (res.status === 204) {
+			dispatch({
+				type: LOGOUT_SUCCESS,
+			});
+			history.push('/');
+		}
 	} catch (err) {
 		console.log(err);
 	}

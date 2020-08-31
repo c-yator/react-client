@@ -23,7 +23,7 @@ function NavBar() {
 	const toggle = () => setIsOpen(!isOpen);
 
 	return (
-		<Navbar color='dark' dark expand='md'>
+		<Navbar color='dark' dark expand='md' sticky='top'>
 			<NavbarBrand tag={RouterNavLink} to='/'>
 				GroceryShop
 			</NavbarBrand>

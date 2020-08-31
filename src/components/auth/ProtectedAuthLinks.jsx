@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {
 	UncontrolledDropdown,
@@ -14,6 +14,7 @@ import { logout, fetchUser } from '../../redux/actions/authActions';
 function ProtectedAuthLinks() {
 	const authState = useSelector((state) => state.authState);
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	useEffect(() => {
 		dispatch(fetchUser());
@@ -42,7 +43,7 @@ function ProtectedAuthLinks() {
 				</DropdownItem>
 				<DropdownItem divider />
 
-				<Button className='w-100' onClick={() => dispatch(logout())}>
+				<Button className='w-100' onClick={() => dispatch(logout(history))}>
 					Log out
 				</Button>
 			</DropdownMenu>

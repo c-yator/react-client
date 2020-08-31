@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 //partials
 import InfoBar from './components/partials/InfoBar';
 import Navbar from './components/partials/NavBar';
+
 //routes
 import Home from './components/pages/Home';
 import Shop from './components/pages/Shop';
@@ -19,6 +20,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 
 //actions
 import { refresh } from './redux/actions/authActions';
+import Footer from './components/partials/Footer';
 
 function App() {
 	const authState = useSelector((state) => state.authState);
@@ -35,9 +37,9 @@ function App() {
 			<InfoBar />
 			<Navbar />
 
-			<div className='container p-3'>
-				<Switch>
-					<Route exact path='/' component={Home} />
+			<Switch>
+				<Route exact path='/' component={Home} />
+				<div className='container py-3'>
 					<Route path='/shop' component={Shop} />
 					<Route path='/cart' component={Cart} />
 					<Route path='/login' component={Login} />
@@ -46,8 +48,10 @@ function App() {
 					<ProtectedRoute path='/favorites' component={Favorites} />
 					<ProtectedRoute path='/profile' component={Profile} />
 					<ProtectedRoute path='/checkout' component={Checkout} />
-				</Switch>
-			</div>
+				</div>
+			</Switch>
+
+			<Footer />
 		</div>
 	);
 }

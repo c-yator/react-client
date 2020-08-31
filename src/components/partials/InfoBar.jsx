@@ -3,7 +3,10 @@ import { Navbar, NavbarText } from 'reactstrap';
 function InfoBar() {
 	return (
 		<Navbar color='light' light>
-			<NavbarText className='ml-auto px-2 py-0'>0700000000</NavbarText>
+			<div className='font-weight-bold py-0 ml-auto'>
+				<NavbarText className=' px-2'>Call to order : 0700000000</NavbarText>
+				<NavbarText className=' px-2 '>Customer care : 0720000000</NavbarText>
+			</div>
 		</Navbar>
 	);
 }
