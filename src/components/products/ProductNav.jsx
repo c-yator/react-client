@@ -5,14 +5,11 @@ import classnames from 'classnames';
 
 import ProductTabPane from './ProductTabPane';
 
+import categories from '../../config/categories';
+
 const ProductNav = () => {
 	const productState = useSelector((state) => state.productState);
 	const [activeTab, setActiveTab] = useState('1');
-	const [categories] = useState([
-		{ id: '1', name: 'fruits' },
-		{ id: '2', name: 'veggies' },
-		{ id: '3', name: 'cereals' },
-	]);
 
 	const toggle = (tab) => {
 		if (activeTab !== tab) setActiveTab(tab);

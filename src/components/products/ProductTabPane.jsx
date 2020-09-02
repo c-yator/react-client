@@ -19,6 +19,7 @@ function ProductTabPane({ categories }) {
 								name={product.name}
 								price={product.price}
 								priceType={product.priceType}
+								img={`https://source.unsplash.com/1600x900/?${product.name},'vegetables'`}
 							/>
 						</Col>
 					))}

@@ -5,7 +5,7 @@ import landing1 from '../../images/1.jpeg';
 function Landing() {
 	return (
 		<div
-			className='bg-dark py-5 container-fluid mb-5 '
+			className='bg-dark py-5 container-fluid mb-lg-5 '
 			style={{ height: '400px' }}
 		>
 			<div className='container'>

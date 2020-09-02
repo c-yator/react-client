@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
+import './App.css';
 
 //partials
 import InfoBar from './components/partials/InfoBar';
