@@ -27,48 +27,51 @@ function Login() {
 		dispatch(login(values));
 	};
 	return (
-		<Form className='w-50 mx-auto' onSubmit={handleSubmit(onSubmit)}>
-			<FormGroup>
-				<Label for='email'>Email</Label>
-				<Input
-					{...(errors.email && { invalid: true })}
-					type='email'
-					name='email'
-					id='email'
-					placeholder='email'
-					innerRef={register({
-						required: 'email field is required',
-						pattern: {
-							value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-							message: 'please enter a valid email addresss',
-						},
-					})}
-				/>
+		<div className='container py-3 d-flex flex-column align-items-center'>
+			<h5 className='font-weight-bold'>Login</h5>
+			<Form className='w-75' onSubmit={handleSubmit(onSubmit)}>
+				<FormGroup>
+					<Label for='email'>Email</Label>
+					<Input
+						{...(errors.email && { invalid: true })}
+						type='email'
+						name='email'
+						id='email'
+						placeholder='email'
+						innerRef={register({
+							required: 'email field is required',
+							pattern: {
+								value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+								message: 'please enter a valid email addresss',
+							},
+						})}
+					/>
 
-				<FormFeedback>{errors?.email && errors.email?.message}</FormFeedback>
-			</FormGroup>
-			<FormGroup>
-				<Label for='password'>Password</Label>
-				<Input
-					{...(errors.password && { invalid: true })}
-					type='password'
-					name='password'
-					id='password'
-					placeholder='password'
-					innerRef={register({
-						required: 'password field is required',
-					})}
-				/>
-				<FormFeedback>
-					{errors?.password && errors.password?.message}
-				</FormFeedback>
-			</FormGroup>
-			<FormText className='float-right'>
-				<span className='px-1'>Dont have an account?</span>
-				<Link to='/register'>Register</Link>
-			</FormText>
-			<Button type='submit'>Log in</Button>
-		</Form>
+					<FormFeedback>{errors?.email && errors.email?.message}</FormFeedback>
+				</FormGroup>
+				<FormGroup>
+					<Label for='password'>Password</Label>
+					<Input
+						{...(errors.password && { invalid: true })}
+						type='password'
+						name='password'
+						id='password'
+						placeholder='password'
+						innerRef={register({
+							required: 'password field is required',
+						})}
+					/>
+					<FormFeedback>
+						{errors?.password && errors.password?.message}
+					</FormFeedback>
+				</FormGroup>
+				<FormText className='float-right'>
+					<span className='px-1'>Dont have an account?</span>
+					<Link to='/register'>Register</Link>
+				</FormText>
+				<Button type='submit'>Log in</Button>
+			</Form>
+		</div>
 	);
 }
 

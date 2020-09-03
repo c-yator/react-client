@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { TabContent, Nav, NavItem, NavLink, Spinner } from 'reactstrap';
+import { TabContent, Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
 
 import ProductTabPane from './ProductTabPane';
@@ -32,11 +32,7 @@ const ProductNav = () => {
 				))}
 			</Nav>
 			<TabContent activeTab={activeTab}>
-				{productState.allProducts.isLoading ? (
-					<Spinner className='d-block mx-auto mt-5' />
-				) : (
-					<ProductTabPane categories={categories} />
-				)}
+				<ProductTabPane categories={categories} />
 			</TabContent>
 		</div>
 	);

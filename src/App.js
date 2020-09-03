@@ -8,6 +8,7 @@ import InfoBar from './components/partials/InfoBar';
 import Navbar from './components/partials/NavBar';
 
 //routes
+import Error from './components/pages/Error';
 import Home from './components/pages/Home';
 import Shop from './components/pages/Shop';
 import Cart from './components/pages/Cart';
@@ -37,10 +38,9 @@ function App() {
 		<div>
 			<InfoBar />
 			<Navbar />
-
-			<Switch>
-				<Route exact path='/' component={Home} />
-				<div className='container py-3'>
+			<div style={{ paddingBottom: '300px' }}>
+				<Switch>
+					<Route exact path='/' component={Home} />
 					<Route path='/shop' component={Shop} />
 					<Route path='/cart' component={Cart} />
 					<Route path='/login' component={Login} />
@@ -49,8 +49,10 @@ function App() {
 					<ProtectedRoute path='/favorites' component={Favorites} />
 					<ProtectedRoute path='/profile' component={Profile} />
 					<ProtectedRoute path='/checkout' component={Checkout} />
-				</div>
-			</Switch>
+
+					<Route component={Error} />
+				</Switch>
+			</div>
 
 			<Footer />
 		</div>

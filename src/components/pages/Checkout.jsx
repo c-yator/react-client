@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Checkout() {
-	return <div>Checkout</div>;
+	return <div className='container py-3'>Checkout</div>;
 }
 
 export default Checkout;
