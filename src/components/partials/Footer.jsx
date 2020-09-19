@@ -1,6 +1,7 @@
 import React from 'react';
-import { Row, Col, Input, Button, Form, FormGroup, FormText } from 'reactstrap';
-import { FaInstagram, FaFacebook } from 'react-icons/fa';
+import { Row, Col } from 'reactstrap';
+
+import { IoLogoFacebook, IoLogoInstagram } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 
 function Footer() {
@@ -9,22 +10,22 @@ function Footer() {
 			className='container-fluid bg-dark py-3'
 			style={{ position: 'absolute', bottom: 0 }}
 		>
-			<div className='container text-white '>
+			<div className='container text-white text-center '>
 				<Row>
-					<Col sm='12' md='2' className='text-center'>
+					<Col sm='12' md='4'>
 						<h5 className='font-weight-bold'>Socials</h5>
 						<div>
-							<a href='#'>
-								<FaInstagram size='1em' />
+							<a href='https://www.instagram.com/'>
+								<IoLogoInstagram size='1.5em' />
 							</a>
 						</div>
 						<div>
-							<a href='#'>
-								<FaFacebook size='1em' />
+							<a href='https://facebook.com/'>
+								<IoLogoFacebook size='1.5em' />
 							</a>
 						</div>
 					</Col>
-					<Col sm='12' md='2' className='text-center'>
+					<Col sm='12' md='4'>
 						<h5 className='font-weight-bold'>Company</h5>
 						<div>
 							<Link to='/about'>About us</Link>
@@ -36,32 +37,12 @@ function Footer() {
 							<Link to='/terms-and-conditions'>Terms and conditions</Link>
 						</div>
 					</Col>
-					<Col sm='12' md='4' className='text-center'>
+					<Col sm='12' md='4'>
 						<div>
 							<h5 className='font-weight-bold'>Contact Us</h5>
 							<div>Call to order : 0700000000</div>
 							<div>Customer care : 0720000000</div>
 							<div>Email : yotefresh@info.co.ke</div>
-						</div>
-					</Col>
-					<Col sm='12' md='4'>
-						<div>
-							<h5 className='font-weight-bold'>Subscribe to our newsletter</h5>
-							<Form>
-								<FormGroup>
-									<FormText>Dont miss out on our latest offers!</FormText>
-								</FormGroup>
-
-								<FormGroup>
-									<Input
-										type='text'
-										id='email'
-										placeholder='Enter email address'
-									/>
-								</FormGroup>
-
-								<Button>Subscribe</Button>
-							</Form>
 						</div>
 					</Col>
 				</Row>

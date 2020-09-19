@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink as RouterNavLink } from 'react-router-dom';
-import { NavItem, NavLink } from 'reactstrap';
+import { NavItem, NavLink, Badge } from 'reactstrap';
+import { IoMdCart } from 'react-icons/io';
 
 function NavLinks({ display }) {
 	const handleDisplay = (display) => {
@@ -23,7 +24,10 @@ function NavLinks({ display }) {
 			</NavItem>
 			<NavItem className={handleDisplay(display)}>
 				<NavLink tag={RouterNavLink} to='/cart'>
-					Cart
+					<span>
+						<IoMdCart size='1.5rem' />
+						<Badge className='px-1'>0</Badge>
+					</span>
 				</NavLink>
 			</NavItem>
 		</>

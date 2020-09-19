@@ -3,7 +3,6 @@ import { FETCH_ALL_PRODUCTS, FETCH_SINGLE_PRODUCT } from '../types';
 const iniialState = {
 	allProducts: [],
 	isLoading: true,
-
 	singleProduct: {},
 };
 

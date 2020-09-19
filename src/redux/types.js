@@ -1,4 +1,5 @@
 //auth
+export const AUTH_USER = 'AUTH_USER';
 export const FETCH_USER = 'FETCH_USER';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';

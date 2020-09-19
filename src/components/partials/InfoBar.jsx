@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar, NavbarText } from 'reactstrap';
+
 function InfoBar() {
 	return (
 		<Navbar

@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+
 import { Switch, Route } from 'react-router-dom';
 import './App.css';
 
 //partials
 import InfoBar from './components/partials/InfoBar';
 import Navbar from './components/partials/NavBar';
+import Footer from './components/partials/Footer';
 
 //routes
 import Error from './components/pages/Error';
@@ -19,25 +20,14 @@ import Orders from './components/pages/Orders';
 import Favorites from './components/pages/Favorites';
 import Profile from './components/pages/Profile';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-
-//actions
-import { refresh } from './redux/actions/authActions';
-import Footer from './components/partials/Footer';
+import Toast from './components/partials/Toast';
 
 function App() {
-	const authState = useSelector((state) => state.authState);
-	const dispatch = useDispatch();
-	useEffect(() => {
-		const { token } = authState;
-		if (!token) {
-			dispatch(refresh());
-		}
-	}, [dispatch, authState]);
-
 	return (
 		<div>
 			<InfoBar />
 			<Navbar />
+			<Toast icon='warning' />
 			<div style={{ paddingBottom: '300px' }}>
 				<Switch>
 					<Route exact path='/' component={Home} />

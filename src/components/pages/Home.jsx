@@ -9,12 +9,14 @@ import categories from '../../config/categories';
 
 import { fetchAllProducts } from '../../redux/actions/productActions';
 
-import { Spinner, Row, Col } from 'reactstrap';
+import { Spinner } from 'reactstrap';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import Slider from 'react-slick';
+import Newsletter from '../partials/Newsletter';
+import WhyUs from '../WhyUs';
 
 function Home() {
 	const productState = useSelector((state) => state.productState);
@@ -92,6 +94,7 @@ function Home() {
 									.filter((product) => product.category === 'offer')
 									.map((product) => (
 										<ProductCard
+											key={product._id}
 											name={product.name}
 											price={product.price}
 											priceType={product.priceType}
@@ -100,13 +103,12 @@ function Home() {
 									))}
 							</Slider>
 						</div>
-
 						<div className='py-5'>
 							<h5 className='font-weight-bold'>Our Products</h5>
 
 							<div>
 								{categories.map((category) => (
-									<div>
+									<div key={category.id}>
 										<div className='d-flex justify-content-between'>
 											<h6 className='font-weight-bold text-capitalize'>
 												{category.name}
@@ -165,6 +167,7 @@ function Home() {
 												.filter((product) => product.category === category.name)
 												.map((product) => (
 													<ProductCard
+														key={product._id}
 														name={product.name}
 														price={product.price}
 														priceType={product.priceType}
@@ -176,22 +179,12 @@ function Home() {
 								))}
 							</div>
 						</div>
+
 						<div className='py-5'>
-							<h5 className='font-weight-bold'>Why us?</h5>
-							<Row className='text-center'>
-								<Col sm='12' md='3'>
-									col 1
-								</Col>
-								<Col sm='12' md='3'>
-									col 2
-								</Col>
-								<Col sm='12' md='3'>
-									col 3
-								</Col>
-								<Col sm='12' md='3'>
-									col 4
-								</Col>
-							</Row>
+							<WhyUs />
+						</div>
+						<div className='py-5'>
+							<Newsletter />
 						</div>
 					</>
 				)}

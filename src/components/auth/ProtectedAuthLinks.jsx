@@ -7,12 +7,11 @@ import {
 	DropdownMenu,
 	DropdownItem,
 	Button,
-	Spinner,
 	NavItem,
 	NavLink,
+	Spinner,
 } from 'reactstrap';
 import { logout, fetchUser } from '../../redux/actions/authActions';
-import NavLinks from '../partials/NavLinks';
 
 function ProtectedAuthLinks() {
 	const authState = useSelector((state) => state.authState);
@@ -29,10 +28,8 @@ function ProtectedAuthLinks() {
 				<DropdownToggle nav caret>
 					{authState.userLoading ? (
 						<Spinner size='sm' />
-					) : authState.user.username ? (
-						authState.user.username
 					) : (
-						'Account'
+						authState.user.username
 					)}
 				</DropdownToggle>
 				<DropdownMenu right>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+
 import { TabContent, Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
 
@@ -8,7 +8,6 @@ import ProductTabPane from './ProductTabPane';
 import categories from '../../config/categories';
 
 const ProductNav = () => {
-	const productState = useSelector((state) => state.productState);
 	const [activeTab, setActiveTab] = useState('1');
 
 	const toggle = (tab) => {

@@ -5,7 +5,23 @@ import {
 	REGISTER_SUCCESS,
 	FETCH_USER,
 	LOGOUT_SUCCESS,
+	AUTH_USER,
 } from '../types';
+
+export const authUser = () => (dispatch, getState) => {
+	try {
+		const {
+			authState: { token },
+		} = getState();
+		if (token) {
+			dispatch({
+				type: AUTH_USER,
+			});
+		}
+	} catch (err) {
+		console.log(err);
+	}
+};
 
 export const register = (newUser) => async (dispatch) => {
 	try {

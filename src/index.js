@@ -10,6 +10,10 @@ import store from './redux/store';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { authUser } from './redux/actions/authActions';
+
+store.dispatch(authUser());
+
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
