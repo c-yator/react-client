@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NavLink as RouterNavLink, Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -9,28 +9,20 @@ import {
 	Button,
 	NavItem,
 	NavLink,
-	Spinner,
 } from 'reactstrap';
-import { logout, fetchUser } from '../../redux/actions/authActions';
+import { logout } from '../../redux/actions/authActions';
 
 function ProtectedAuthLinks() {
 	const authState = useSelector((state) => state.authState);
+
 	const dispatch = useDispatch();
 	const history = useHistory();
 
-	useEffect(() => {
-		dispatch(fetchUser());
-	}, [dispatch]);
-
 	return (
 		<>
-			<UncontrolledDropdown nav inNavbar className='d-none d-md-block'>
+			<UncontrolledDropdown nav inNavbar className='d-none d-md-block pb-0'>
 				<DropdownToggle nav caret>
-					{authState.userLoading ? (
-						<Spinner size='sm' />
-					) : (
-						authState.user.username
-					)}
+					{authState.user?.username || 'Account'}
 				</DropdownToggle>
 				<DropdownMenu right>
 					<DropdownItem tag={Link} to='/profile'>
@@ -43,10 +35,11 @@ function ProtectedAuthLinks() {
 						Favorites
 					</DropdownItem>
 					<DropdownItem divider />
-
-					<Button className='w-100' onClick={() => dispatch(logout(history))}>
-						Log out
-					</Button>
+					<DropdownItem tag={'div'}>
+						<Button className='w-100' onClick={() => dispatch(logout(history))}>
+							Log out
+						</Button>
+					</DropdownItem>
 				</DropdownMenu>
 			</UncontrolledDropdown>
 

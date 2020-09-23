@@ -1,5 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
 	Button,
 	Form,
@@ -9,14 +11,18 @@ import {
 	FormText,
 	FormFeedback,
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
+
 import withRedirect from '../Hoc/withRedirect';
+
+import { register as registerUser } from '../../redux/actions/authActions';
 
 function Register() {
 	const { register, errors, handleSubmit } = useForm();
+	const dispatch = useDispatch();
 
 	const onSubmit = (values) => {
 		console.log('register new user', values);
+		dispatch(registerUser(values));
 	};
 
 	return (
@@ -95,7 +101,7 @@ function Register() {
 					<span className='px-1'>already registered?</span>
 					<Link to='/login'>Log in</Link>
 				</FormText>
-				<Button>Register</Button>
+				<Button type='submit'>Register</Button>
 			</Form>
 		</div>
 	);

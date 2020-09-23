@@ -1,7 +1,11 @@
 import React from 'react';
 
 function Profile() {
-	return <div className='container py-3'>Profile</div>;
+	return (
+		<div className='container py-3'>
+			<h3>Profile</h3>
+		</div>
+	);
 }
 
 export default Profile;

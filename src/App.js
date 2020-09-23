@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Switch, Route } from 'react-router-dom';
 import './App.css';
 
@@ -7,8 +6,10 @@ import './App.css';
 import InfoBar from './components/partials/InfoBar';
 import Navbar from './components/partials/NavBar';
 import Footer from './components/partials/Footer';
+import DisplayResponse from './components/partials/DisplayResponse';
 
 //routes
+import ProtectedRoute from './components/auth/ProtectedRoute';
 import Error from './components/pages/Error';
 import Home from './components/pages/Home';
 import Shop from './components/pages/Shop';
@@ -19,15 +20,13 @@ import Checkout from './components/pages/Checkout';
 import Orders from './components/pages/Orders';
 import Favorites from './components/pages/Favorites';
 import Profile from './components/pages/Profile';
-import ProtectedRoute from './components/auth/ProtectedRoute';
-import Toast from './components/partials/Toast';
 
 function App() {
 	return (
 		<div>
 			<InfoBar />
 			<Navbar />
-			<Toast icon='warning' />
+			<DisplayResponse timeout={2000} />
 			<div style={{ paddingBottom: '300px' }}>
 				<Switch>
 					<Route exact path='/' component={Home} />

@@ -9,14 +9,16 @@ instance.interceptors.request.use((request) => {
 		request.method === 'POST' ||
 		request.method === 'PATCH' ||
 		request.method === 'PUT'
-	)
+	) {
 		request.headers['Content-Type'] = 'application/json;charset=utf-8';
+	}
 
 	const {
 		authState: { token },
 	} = store.getState();
-
-	if (token) request.headers.Authorization = `Bearer ${token}`;
+	if (token) {
+		request.headers.Authorization = `Bearer ${token}`;
+	}
 
 	return request;
 });
