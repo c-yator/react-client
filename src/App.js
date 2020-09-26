@@ -1,5 +1,7 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Switch, Route, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
 import './App.css';
 
 //partials
@@ -21,27 +23,37 @@ import Orders from './components/pages/Orders';
 import Favorites from './components/pages/Favorites';
 import Profile from './components/pages/Profile';
 
+import { clearResponse } from './redux/actions/responseActions';
+
 function App() {
+	const dispatch = useDispatch();
+	const history = useHistory();
+
+	useEffect(() => {
+		history.listen((location) => {
+			dispatch(clearResponse());
+		});
+	}, [history, dispatch]);
+
 	return (
 		<div>
 			<InfoBar />
 			<Navbar />
-			<DisplayResponse timeout={2000} />
-			<div style={{ paddingBottom: '300px' }}>
-				<Switch>
-					<Route exact path='/' component={Home} />
-					<Route path='/shop' component={Shop} />
-					<Route path='/cart' component={Cart} />
-					<Route path='/login' component={Login} />
-					<Route path='/register' component={Register} />
-					<ProtectedRoute path='/orders' component={Orders} />
-					<ProtectedRoute path='/favorites' component={Favorites} />
-					<ProtectedRoute path='/profile' component={Profile} />
-					<ProtectedRoute path='/checkout' component={Checkout} />
+			<DisplayResponse />
 
-					<Route component={Error} />
-				</Switch>
-			</div>
+			<Switch>
+				<Route exact path='/' component={Home} />
+				<Route path='/shop' component={Shop} />
+				<Route path='/cart' component={Cart} />
+				<Route path='/login' component={Login} />
+				<Route path='/register' component={Register} />
+				<ProtectedRoute path='/orders' component={Orders} />
+				<ProtectedRoute path='/favorites' component={Favorites} />
+				<ProtectedRoute path='/profile' component={Profile} />
+				<ProtectedRoute path='/checkout' component={Checkout} />
+
+				<Route component={Error} />
+			</Switch>
 
 			<Footer />
 		</div>

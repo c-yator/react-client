@@ -3,7 +3,7 @@ import { Form, FormGroup, FormText, Input, Button } from 'reactstrap';
 
 function Newsletter() {
 	return (
-		<div className='w-50'>
+		<div>
 			<h5 className='font-weight-bold'>Subscribe to our newsletter</h5>
 			<Form>
 				<FormGroup>

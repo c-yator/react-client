@@ -7,6 +7,7 @@ import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav } from 'reactstrap';
 import ProtectedAuthLinks from '../auth/ProtectedAuthLinks';
 import PublicAuthLinks from '../auth/PublicAuthLinks';
 import NavLinks from './NavLinks';
+// import NavLinks from './NavLinks';
 
 function NavBar() {
 	const authState = useSelector((state) => state.authState);
@@ -17,26 +18,23 @@ function NavBar() {
 
 	return (
 		<Navbar color='dark' dark expand='md' sticky='top'>
+			<NavbarToggler onClick={toggle} />
 			<NavbarBrand tag={RouterNavLink} to='/'>
 				GroceryShop
 			</NavbarBrand>
-			<NavbarToggler onClick={toggle} />
+
+			<NavLinks className='d-md-none' />
 			<Collapse isOpen={isOpen} navbar>
 				<Nav className='ml-auto' navbar>
 					{authState.isAuthenticated ? (
-						<>
-							<NavLinks display='sm-only' />
-							<ProtectedAuthLinks />
-							<NavLinks display='md-up' />
-						</>
+						<ProtectedAuthLinks />
 					) : (
-						<>
-							<PublicAuthLinks />
-							<NavLinks />
-						</>
+						<PublicAuthLinks />
 					)}
 				</Nav>
 			</Collapse>
+
+			<NavLinks className='d-none d-md-flex' />
 		</Navbar>
 	);
 }

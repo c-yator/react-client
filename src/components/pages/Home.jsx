@@ -16,7 +16,6 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import Slider from 'react-slick';
 import Newsletter from '../partials/Newsletter';
-import WhyUs from '../WhyUs';
 
 function Home() {
 	const productState = useSelector((state) => state.productState);
@@ -61,11 +60,10 @@ function Home() {
 									// focusOnSelect: true,
 									responsive: [
 										{
-											breakpoint: 1024,
+											breakpoint: 992,
 											settings: {
 												slidesToShow: 2,
 												slidesToScroll: 1,
-												dots: false,
 											},
 										},
 										{
@@ -73,17 +71,14 @@ function Home() {
 											settings: {
 												slidesToShow: 1,
 												slidesToScroll: 1,
-												initialSlide: 2,
-												dots: false,
+												arrows: false,
 											},
 										},
 										{
-											breakpoint: 480,
+											breakpoint: 576,
 											settings: {
 												slidesToShow: 1,
 												slidesToScroll: 1,
-
-												dots: false,
 												arrows: false,
 											},
 										},
@@ -135,10 +130,11 @@ function Home() {
 												// focusOnSelect: true,
 												responsive: [
 													{
-														breakpoint: 1024,
+														breakpoint: 992,
 														settings: {
 															slidesToShow: 3,
 															slidesToScroll: 2,
+															dots: false,
 														},
 													},
 													{
@@ -146,16 +142,17 @@ function Home() {
 														settings: {
 															slidesToShow: 2,
 															slidesToScroll: 1,
-															initialSlide: 2,
+
+															dots: false,
+															arrows: false,
 														},
 													},
 													{
-														breakpoint: 480,
+														breakpoint: 576,
 														settings: {
-															slidesToShow: 1.5,
+															slidesToShow: 1.8,
 															slidesToScroll: 1,
-															initialSlide: 0,
-
+															initialSlide: 2,
 															dots: false,
 															arrows: false,
 														},
@@ -178,10 +175,6 @@ function Home() {
 									</div>
 								))}
 							</div>
-						</div>
-
-						<div className='py-5'>
-							<WhyUs />
 						</div>
 						<div className='py-5'>
 							<Newsletter />

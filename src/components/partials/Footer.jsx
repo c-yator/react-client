@@ -6,13 +6,10 @@ import { Link } from 'react-router-dom';
 
 function Footer() {
 	return (
-		<footer
-			className='container-fluid bg-dark py-3'
-			style={{ position: 'absolute', bottom: 0 }}
-		>
+		<footer className='container-fluid bg-dark py-3'>
 			<div className='container text-white text-center '>
 				<Row>
-					<Col sm='12' md='4'>
+					<Col sm='12' md='4' className='p-2'>
 						<h5 className='font-weight-bold'>Socials</h5>
 						<div>
 							<a href='https://www.instagram.com/'>
@@ -25,7 +22,7 @@ function Footer() {
 							</a>
 						</div>
 					</Col>
-					<Col sm='12' md='4'>
+					<Col sm='12' md='4' className='p-2'>
 						<h5 className='font-weight-bold'>Company</h5>
 						<div>
 							<Link to='/about'>About us</Link>
@@ -37,7 +34,7 @@ function Footer() {
 							<Link to='/terms-and-conditions'>Terms and conditions</Link>
 						</div>
 					</Col>
-					<Col sm='12' md='4'>
+					<Col sm='12' md='4' className='p-2'>
 						<div>
 							<h5 className='font-weight-bold'>Contact Us</h5>
 							<div>Call to order : 0700000000</div>
