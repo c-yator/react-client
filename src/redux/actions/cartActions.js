@@ -45,8 +45,8 @@ export const increaseQuantity = (productId) => (dispatch, getState) => {
 	const updated = cart.map((product) => {
 		if (product.id === productId) {
 			product.quantity++;
-			return product;
 		}
+		return product;
 	});
 
 	dispatch({
@@ -61,8 +61,8 @@ export const decreaseQuantity = (productId) => (dispatch, getState) => {
 	const updated = cart.map((product) => {
 		if (product.id === productId) {
 			product.quantity > 0 && product.quantity--;
-			return product;
 		}
+		return product;
 	});
 
 	dispatch({

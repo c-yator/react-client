@@ -10,8 +10,7 @@ import {
 	// USER_LOADED,
 } from '../types';
 import authService from '../../services/authService';
-import { setResponse } from '../actions/responseActions';
-import notify from '../../config/notify';
+// import { setResponse } from '../actions/responseActions';
 
 export const register = (newUser) => async (dispatch) => {
 	try {
@@ -28,7 +27,7 @@ export const register = (newUser) => async (dispatch) => {
 		});
 	} catch (error) {
 		console.log('register error response', error.response);
-		const errorId = 'register error response';
+		// const errorId = 'register error response';
 		const message =
 			error.response?.data?.message || error.message || error.toString();
 
@@ -53,7 +52,7 @@ export const login = (credentials) => async (dispatch) => {
 		});
 	} catch (error) {
 		console.log('login error response', error.response);
-		const errorId = 'login error response';
+		// const errorId = 'login error response';
 		const message =
 			error.response?.data?.message || error.message || error.toString();
 		toast.error(message);
