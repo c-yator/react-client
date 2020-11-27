@@ -20,47 +20,47 @@ function ProtectedAuthLinks() {
 
 	return (
 		<>
-			<UncontrolledDropdown nav inNavbar className='d-none d-md-block pb-0'>
+			<UncontrolledDropdown nav inNavbar className="d-none d-md-block pb-0">
 				<DropdownToggle nav caret>
 					{authState.user?.username || 'Account'}
 				</DropdownToggle>
 				<DropdownMenu right>
-					<DropdownItem tag={Link} to='/profile'>
+					<DropdownItem tag={Link} to="/profile">
 						Profile
 					</DropdownItem>
-					<DropdownItem tag={Link} to='/orders'>
+					<DropdownItem tag={Link} to="/orders">
 						Orders
 					</DropdownItem>
-					<DropdownItem tag={Link} to='/favorites'>
+					<DropdownItem tag={Link} to="/favorites">
 						Favorites
 					</DropdownItem>
 					<DropdownItem divider />
 					<DropdownItem tag={'div'}>
-						<Button className='w-100' onClick={() => dispatch(logout(history))}>
+						<Button className="w-100" onClick={() => dispatch(logout(history))}>
 							Log out
 						</Button>
 					</DropdownItem>
 				</DropdownMenu>
 			</UncontrolledDropdown>
 
-			<div className='d-md-none'>
+			<div className="d-md-none">
 				<NavItem>
-					<NavLink tag={RouterNavLink} to='/profile'>
+					<NavLink tag={RouterNavLink} to="/profile">
 						Profile
 					</NavLink>
 				</NavItem>
 				<NavItem>
-					<NavLink tag={RouterNavLink} to='/orders'>
+					<NavLink tag={RouterNavLink} to="/orders">
 						Orders
 					</NavLink>
 				</NavItem>
 				<NavItem>
-					<NavLink tag={RouterNavLink} to='/favorites'>
+					<NavLink tag={RouterNavLink} to="/favorites">
 						Favorites
 					</NavLink>
 				</NavItem>
 				<hr style={{ background: 'white' }} />
-				<Button className='w-100' onClick={() => dispatch(logout(history))}>
+				<Button className="w-100" onClick={() => dispatch(logout(history))}>
 					Log out
 				</Button>
 			</div>

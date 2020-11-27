@@ -4,36 +4,33 @@
 	box-sizing: border-box;
 }
 
-html,
-body {
+html {
 	height: 100%;
 }
-
-/* body {
-	min-height: 100vh;
-	position: relative;
+body {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
-footer {
-	position: absolute;
-	bottom: 0;
-} */
-
+#footer-root {
+	margin-top: auto;
+}
+/* 
 .slick-prev::before,
 .slick-next::before {
 	color: black !important;
-}
+} */
 
 .displayResponse {
-	position: absolute;
-	animation: slideIn 0.5s both ease;
+	animation: FadeIn 0.5s both ease-in-out;
 }
 
-@keyframes slideIn {
+@keyframes FadeIn {
 	from {
-		transform: translateY(-50px);
+		opacity: 0;
 	}
 	to {
-		transform: translateY(0px);
+		opacity: 1;
 	}
 }

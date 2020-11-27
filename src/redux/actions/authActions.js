@@ -1,4 +1,5 @@
 // import instance from '../../config/axiosConfig';
+import { toast } from 'react-toastify';
 import {
 	REFRESH_TOKEN_SUCCESS,
 	LOGIN_SUCCESS,
@@ -10,6 +11,7 @@ import {
 } from '../types';
 import authService from '../../services/authService';
 import { setResponse } from '../actions/responseActions';
+import notify from '../../config/notify';
 
 export const register = (newUser) => async (dispatch) => {
 	try {
@@ -26,10 +28,12 @@ export const register = (newUser) => async (dispatch) => {
 		});
 	} catch (error) {
 		console.log('register error response', error.response);
+		const errorId = 'register error response';
 		const message =
 			error.response?.data?.message || error.message || error.toString();
-		console.log(message);
-		dispatch(setResponse(message));
+
+		toast.error(message);
+		// dispatch(setResponse({ errorId, message }));
 	}
 };
 
@@ -49,10 +53,11 @@ export const login = (credentials) => async (dispatch) => {
 		});
 	} catch (error) {
 		console.log('login error response', error.response);
+		const errorId = 'login error response';
 		const message =
 			error.response?.data?.message || error.message || error.toString();
-		console.log(message);
-		dispatch(setResponse(message));
+		toast.error(message);
+		// dispatch(setResponse({ errorId, message }));
 	}
 };
 
@@ -72,8 +77,9 @@ export const refresh = () => async (dispatch) => {
 		console.log('refresh error response', error.response);
 		const message =
 			error.response?.data?.message || error.message || error.toString();
-		console.log(message);
-		dispatch(setResponse(message));
+		// console.log(message);
+		toast.error(message);
+		// dispatch(setResponse(message));
 	}
 };
 
@@ -119,7 +125,8 @@ export const logout = (history) => async (dispatch) => {
 		const message =
 			error.response?.data?.message || error.message || error.toString();
 		console.log(message);
-		dispatch(setResponse(message));
+		toast.error(message);
+		// dispatch(setResponse(message));
 		console.log(2);
 	}
 };

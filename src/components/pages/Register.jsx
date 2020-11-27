@@ -26,17 +26,18 @@ function Register() {
 	};
 
 	return (
-		<div className='container py-3 d-flex flex-column align-items-center'>
-			<h5 className='font-weight-bold'>Register</h5>
-			<Form className='w-75 mx-auto' onSubmit={handleSubmit(onSubmit)}>
+		<div className="container py-3 ">
+			<h5 className="font-weight-bold">Register</h5>
+
+			<Form onSubmit={handleSubmit(onSubmit)}>
 				<FormGroup>
-					<Label for='username'>Username</Label>
+					<Label for="username">Username</Label>
 					<Input
 						{...(errors.username && { invalid: true })}
-						type='text'
-						name='username'
-						id='username'
-						placeholder='username'
+						type="text"
+						name="username"
+						id="username"
+						placeholder="username"
 						innerRef={register({
 							required: 'username field is required',
 							maxLength: {
@@ -55,13 +56,13 @@ function Register() {
 					</FormFeedback>
 				</FormGroup>
 				<FormGroup>
-					<Label for='email'>Email</Label>
+					<Label for="email">Email</Label>
 					<Input
 						{...(errors.email && { invalid: true })}
-						type='email'
-						name='email'
-						id='email'
-						placeholder='email'
+						type="email"
+						name="email"
+						id="email"
+						placeholder="email"
 						innerRef={register({
 							required: 'email field is required',
 							pattern: {
@@ -73,13 +74,13 @@ function Register() {
 					<FormFeedback>{errors?.email && errors.email?.message}</FormFeedback>
 				</FormGroup>
 				<FormGroup>
-					<Label for='password'>Password</Label>
+					<Label for="password">Password</Label>
 					<Input
 						{...(errors.password && { invalid: true })}
-						type='password'
-						name='password'
-						id='password'
-						placeholder='password'
+						type="password"
+						name="password"
+						id="password"
+						placeholder="password"
 						innerRef={register({
 							required: 'password field is required',
 							maxLength: {
@@ -97,11 +98,11 @@ function Register() {
 						{errors?.password && errors.password?.message}
 					</FormFeedback>
 				</FormGroup>
-				<FormText className='float-right'>
-					<span className='px-1'>already registered?</span>
-					<Link to='/login'>Log in</Link>
+				<FormText className="float-right">
+					<span className="px-1">already registered?</span>
+					<Link to="/login">Log in</Link>
 				</FormText>
-				<Button type='submit'>Register</Button>
+				<Button type="submit">Register</Button>
 			</Form>
 		</div>
 	);

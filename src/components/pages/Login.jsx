@@ -27,17 +27,18 @@ function Login() {
 		dispatch(login(values));
 	};
 	return (
-		<div className='container py-3 d-flex flex-column align-items-center'>
-			<h5 className='font-weight-bold'>Login</h5>
-			<Form className='w-75' onSubmit={handleSubmit(onSubmit)}>
+		<div className="container py-3 ">
+			<h5 className="font-weight-bold">Login</h5>
+
+			<Form onSubmit={handleSubmit(onSubmit)}>
 				<FormGroup>
-					<Label for='email'>Email</Label>
+					<Label for="email">Email</Label>
 					<Input
 						{...(errors.email && { invalid: true })}
-						type='email'
-						name='email'
-						id='email'
-						placeholder='email'
+						type="email"
+						name="email"
+						id="email"
+						placeholder="email"
 						innerRef={register({
 							required: 'email field is required',
 							pattern: {
@@ -50,13 +51,13 @@ function Login() {
 					<FormFeedback>{errors?.email && errors.email?.message}</FormFeedback>
 				</FormGroup>
 				<FormGroup>
-					<Label for='password'>Password</Label>
+					<Label for="password">Password</Label>
 					<Input
 						{...(errors.password && { invalid: true })}
-						type='password'
-						name='password'
-						id='password'
-						placeholder='password'
+						type="password"
+						name="password"
+						id="password"
+						placeholder="password"
 						innerRef={register({
 							required: 'password field is required',
 						})}
@@ -65,11 +66,11 @@ function Login() {
 						{errors?.password && errors.password?.message}
 					</FormFeedback>
 				</FormGroup>
-				<FormText className='float-right'>
-					<span className='px-1'>Dont have an account?</span>
-					<Link to='/register'>Register</Link>
+				<FormText className="float-right">
+					<span className="px-1">Dont have an account?</span>
+					<Link to="/register">Register</Link>
 				</FormText>
-				<Button type='submit'>Log in</Button>
+				<Button type="submit">Log in</Button>
 			</Form>
 		</div>
 	);

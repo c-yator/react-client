@@ -22,6 +22,12 @@ export const CREATE_PRODUCT = 'CREATE_PRODUCT';
 export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 
+//cart
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+export const INCREASE_QUANTITY = 'INCREASE_QUANTITY';
+export const DECREASE_QUANTITY = 'DECREASE_QUANTITY';
+
 //response
 export const SET_RESPONSE = 'SET_RESPONSE';
 export const CLEAR_RESPONSE = 'CLEAR_RESPONSE';

@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
+import { Slide, ToastContainer } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 //partials
 import InfoBar from './components/partials/InfoBar';
 import Navbar from './components/partials/NavBar';
-import Footer from './components/partials/Footer';
-import DisplayResponse from './components/partials/DisplayResponse';
+import FooterPortal from './components/partials/FooterPortal';
+// import DisplayResponse from "./components/partials/DisplayResponse";
 
 //routes
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -24,6 +26,7 @@ import Favorites from './components/pages/Favorites';
 import Profile from './components/pages/Profile';
 
 import { clearResponse } from './redux/actions/responseActions';
+// import DisplayResponse from './components/partials/DisplayResponse';
 
 function App() {
 	const dispatch = useDispatch();
@@ -36,26 +39,30 @@ function App() {
 	}, [history, dispatch]);
 
 	return (
-		<div>
+		<div className="app">
 			<InfoBar />
 			<Navbar />
-			<DisplayResponse />
+			<ToastContainer
+				position={'top-center'}
+				transition={Slide}
+				className="w-50"
+			/>
 
 			<Switch>
-				<Route exact path='/' component={Home} />
-				<Route path='/shop' component={Shop} />
-				<Route path='/cart' component={Cart} />
-				<Route path='/login' component={Login} />
-				<Route path='/register' component={Register} />
-				<ProtectedRoute path='/orders' component={Orders} />
-				<ProtectedRoute path='/favorites' component={Favorites} />
-				<ProtectedRoute path='/profile' component={Profile} />
-				<ProtectedRoute path='/checkout' component={Checkout} />
+				<Route exact path="/" component={Home} />
+				<Route path="/shop" component={Shop} />
+				<Route path="/cart" component={Cart} />
+				<Route path="/login" component={Login} />
+				<Route path="/register" component={Register} />
+				<ProtectedRoute path="/orders" component={Orders} />
+				<ProtectedRoute path="/favorites" component={Favorites} />
+				<ProtectedRoute path="/profile" component={Profile} />
+				<ProtectedRoute path="/checkout" component={Checkout} />
 
 				<Route component={Error} />
 			</Switch>
 
-			<Footer />
+			<FooterPortal />
 		</div>
 	);
 }
