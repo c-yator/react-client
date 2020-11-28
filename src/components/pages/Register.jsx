@@ -43,11 +43,11 @@ function Register() {
 							maxLength: {
 								value: 30,
 								message:
-									'username length must be less than or equal to 30 characters long',
+									'User name length must be less than or equal to 30 characters long',
 							},
 							minLength: {
-								value: 3,
-								message: 'username length must be at least 3 characters long',
+								value: 2,
+								message: 'User name length must be at least 2 characters long',
 							},
 						})}
 					/>
