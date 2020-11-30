@@ -1,13 +1,18 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Col, Row, Container } from 'reactstrap';
-
 import CartItems from '../partials/CartItems';
 import CartTotals from '../partials/CartTotals';
 
+import { getSubtotal } from '../../redux/actions/cartActions';
+
 function Cart() {
-	const { cart } = useSelector((state) => state.cartState);
+	const { cart, subtotal } = useSelector((state) => state.cartState);
+
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(getSubtotal());
+	}, [dispatch]);
 
 	return (
 		<Container className="py-3">
@@ -34,7 +39,7 @@ function Cart() {
 				/>
 			))}
 
-			<CartTotals cart={cart} />
+			<CartTotals cart={cart} subtotal={subtotal} />
 		</Container>
 	);
 }

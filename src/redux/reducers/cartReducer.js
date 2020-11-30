@@ -3,34 +3,44 @@ import {
 	INCREASE_QUANTITY,
 	REMOVE_FROM_CART,
 	DECREASE_QUANTITY,
+	GET_SUBTOTAL,
 } from '../types';
 
 const iniialState = {
 	cart: [],
+	subtotal: 0,
+	deliveryFees: null,
+	total: 0,
 };
 
 const cartReducer = (state = iniialState, action) => {
-	switch (action.type) {
+	const { type, payload } = action;
+	switch (type) {
 		case ADD_TO_CART:
 			return {
 				...state,
-				cart: [...state.cart, action.payload],
+				cart: [...state.cart, payload],
 			};
 
 		case REMOVE_FROM_CART:
 			return {
 				...state,
-				cart: action.payload,
+				cart: payload,
 			};
 		case INCREASE_QUANTITY:
 			return {
 				...state,
-				cart: action.payload,
+				cart: payload,
 			};
 		case DECREASE_QUANTITY:
 			return {
 				...state,
-				cart: action.payload,
+				cart: payload,
+			};
+		case GET_SUBTOTAL:
+			return {
+				...state,
+				subtotal: payload,
 			};
 		default:
 			return state;

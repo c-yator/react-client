@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import {
 	Form,
 	FormGroup,
@@ -12,10 +13,16 @@ import {
 import Button from 'reactstrap/lib/Button';
 import { useForm } from 'react-hook-form';
 
+import { setUserAddress } from '../../redux/actions/userActions';
+
 function AddressForm() {
 	const { register, handleSubmit, errors } = useForm();
-	const onSubmit = (data) => console.log('data', data);
-	console.log('errors', errors);
+	const dispatch = useDispatch();
+	const onSubmit = (data) => {
+		console.log('clicked');
+		dispatch(setUserAddress(data));
+	};
+
 	return (
 		<Form onSubmit={handleSubmit(onSubmit)}>
 			<FormGroup>
@@ -67,19 +74,19 @@ function AddressForm() {
 				</FormFeedback>
 			</FormGroup>
 			<FormGroup>
-				<Label for="mobilePhoneNumber1">Mobile phone number 1</Label>
+				<Label for="mobilePhoneNumber1">Mobile phone number </Label>
 				<InputGroup>
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>+254</InputGroupText>
 					</InputGroupAddon>
 					<Input
-						{...(errors.mobilePhoneNumber1 && { invalid: true })}
+						{...(errors.mobilePhoneNumber && { invalid: true })}
 						type="tel"
-						name="mobilePhoneNumber1"
-						id="mobilePhoneNumber1"
-						placeholder="use the format 705495536 or 105495536"
+						name="mobilePhoneNumber"
+						id="mobilePhoneNumber"
+						placeholder="e.g. 705495536 or 105495536"
 						innerRef={register({
-							required: 'Mobile phone number 1 is required',
+							required: 'Mobile phone number is required',
 							maxLength: {
 								value: 10,
 								message:
@@ -93,51 +100,54 @@ function AddressForm() {
 						})}
 					/>
 					<FormFeedback>
-						{errors?.mobilePhoneNumber1 && errors.mobilePhoneNumber1?.message}
+						{errors?.mobilePhoneNumber && errors.mobilePhoneNumber?.message}
 					</FormFeedback>
 				</InputGroup>
 			</FormGroup>
 			<FormGroup>
-				<Label for="mobilePhoneNumber2">Mobile phone number 2 (optional)</Label>
+				<Label for="alternatePhoneNumber ">
+					Alternate phone number (optional)
+				</Label>
 				<InputGroup>
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>+254</InputGroupText>
 					</InputGroupAddon>
 					<Input
-						{...(errors.mobilePhoneNumber2 && { invalid: true })}
+						{...(errors.alternatePhoneNumber && { invalid: true })}
 						type="tel"
-						name="mobilePhoneNumber2"
-						id="mobilePhoneNumber2"
-						placeholder="use the format 705495536 or 105495536"
+						name="alternatePhoneNumber "
+						id="alternatePhoneNumber "
+						placeholder="e.g 705495536 or 105495536"
 						innerRef={register({
 							maxLength: {
 								value: 10,
 								message:
-									'mobile phone number length must not exceed 10 characters',
+									'Alternate phone number length must not exceed 10 characters',
 							},
 							minLength: {
 								value: 9,
 								message:
-									'mobile phone number must be atleast 9 characters long',
+									'Alternate phone number must be atleast 9 characters long',
 							},
 						})}
 					/>
 					<FormFeedback>
-						{errors?.mobilePhoneNumber2 && errors.mobilePhoneNumber2?.message}
+						{errors?.alternatePhoneNumber &&
+							errors.alternatePhoneNumber?.message}
 					</FormFeedback>
 				</InputGroup>
 			</FormGroup>
 			<FormGroup>
-				<Label for="address">Delivery Address</Label>
+				<Label for="deliveryAddress">Delivery Address</Label>
 				<Input
-					{...(errors.address && { invalid: true })}
+					{...(errors.deliveryAddress && { invalid: true })}
 					type="textarea"
-					name="address"
-					id="address"
+					name="deliveryAddress"
+					id="deliveryAddress"
 					innerRef={register({ required: 'Delivery address is required' })}
 				/>
 				<FormFeedback>
-					{errors?.address && errors.address?.message}
+					{errors?.deliveryAddress && errors.deliveryAddress?.message}
 				</FormFeedback>
 			</FormGroup>
 			<FormGroup>
@@ -150,7 +160,7 @@ function AddressForm() {
 					innerRef={register({ required: 'please select your county' })}
 				>
 					<option value="">Select county</option>
-					<option value="UasinGishu">Uasin Gishu</option>
+					<option value="Uasin Gishu">Uasin Gishu</option>
 				</Input>
 				<FormFeedback>{errors?.county && errors.county?.message}</FormFeedback>
 			</FormGroup>
@@ -164,8 +174,8 @@ function AddressForm() {
 					innerRef={register({ required: 'please select your town' })}
 				>
 					<option value="">Select town</option>
-					<option value="EldoretEast">Eldoret east</option>
-					<option value="EldoretCBD">Eldoret CBD</option>
+					<option value="Eldoret East">Eldoret east</option>
+					<option value="Eldoret CBD">Eldoret CBD</option>
 				</Input>
 				<FormFeedback>{errors?.town && errors.town?.message}</FormFeedback>
 			</FormGroup>

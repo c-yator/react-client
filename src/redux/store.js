@@ -13,7 +13,7 @@ const middleware = [thunk];
 const persistConfig = {
 	key: 'root',
 	storage,
-	whitelist: ['cartState'],
+	whitelist: ['cartState', 'userState'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

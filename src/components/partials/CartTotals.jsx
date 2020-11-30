@@ -2,12 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, ButtonGroup, Button } from 'reactstrap';
 
-function CartTotals({ cart }) {
-	const subtotal = cart.reduce(
-		(total, { price, quantity }) => total + price * quantity,
-		0
-	);
-
+function CartTotals({ cart, subtotal }) {
 	return (
 		<Row className="d-flex justify-content-end">
 			<Col md="6">
