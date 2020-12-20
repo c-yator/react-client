@@ -6,7 +6,7 @@ import {
 	GET_SUBTOTAL,
 } from '../types';
 import { toast } from 'react-toastify';
-export const addToCart = ({ product }) => (dispatch, getState) => {
+export const addToCart = (product) => (dispatch, getState) => {
 	try {
 		const { cart } = getState().cartState;
 
@@ -33,7 +33,7 @@ export const removeFromCart = (productId) => (dispatch, getState) => {
 
 		dispatch({ type: REMOVE_FROM_CART, payload: filtered });
 	} catch (error) {
-		console.log('removeFromCart', error.message);
+		console.log('removeFromCart error', error.message);
 		const message = error.message || error.toString();
 		console.log(message);
 		toast.error(message);

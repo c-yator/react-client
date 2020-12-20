@@ -15,12 +15,13 @@ import { useForm } from 'react-hook-form';
 
 import { setUserAddress } from '../../redux/actions/userActions';
 
-function AddressForm() {
+function AddressForm({ onComplete }) {
 	const { register, handleSubmit, errors } = useForm();
 	const dispatch = useDispatch();
 	const onSubmit = (data) => {
 		console.log('clicked');
 		dispatch(setUserAddress(data));
+		onComplete(true);
 	};
 
 	return (

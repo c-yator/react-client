@@ -11,7 +11,7 @@ import {
 import { IoMdHeart } from 'react-icons/io';
 
 import { addToCart } from '../../redux/actions/cartActions';
-
+import { addToFavorites } from '../../redux/actions/favoritesActions';
 // const ProductCard = ({ name, price, priceType, img }) => {
 const ProductCard = ({ id, name, price, priceType, img }) => {
 	const dispatch = useDispatch();
@@ -34,13 +34,14 @@ const ProductCard = ({ id, name, price, priceType, img }) => {
 
 			<CardFooter className="p-0">
 				<ButtonGroup className="w-100">
-					<Button
-						className="w-75"
-						onClick={() => dispatch(addToCart({ product }))}
-					>
+					<Button className="w-75" onClick={() => dispatch(addToCart(product))}>
 						Add to cart
 					</Button>
-					<Button color="dark" className="w-25">
+					<Button
+						color="dark"
+						className="w-25"
+						onClick={() => dispatch(addToFavorites(product))}
+					>
 						<IoMdHeart />
 					</Button>
 				</ButtonGroup>

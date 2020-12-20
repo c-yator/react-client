@@ -30,7 +30,7 @@ function OrderSummary() {
 			<Card>
 				<CardHeader>Order Summary</CardHeader>
 				<CardBody className="py-3">
-					{cart.map(({ id, name, price, priceType }) => (
+					{cart.map(({ id, name, price, priceType, quantity }) => (
 						<Row className="py-2" key={id}>
 							<Col>
 								<div className="d-flex">
@@ -44,6 +44,8 @@ function OrderSummary() {
 									<div>
 										<p className="m-0 text-capitalize">{name}</p>
 										<small>{`Price: KES.${price} ${priceType}`}</small>
+										<br />
+										<small>{`quantity: ${quantity}`}</small>
 									</div>
 								</div>
 							</Col>

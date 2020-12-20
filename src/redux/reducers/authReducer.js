@@ -16,11 +16,11 @@ import {
 
 const user = JSON.parse(localStorage.getItem('user'));
 
-const iniialState = user
+const initialState = user
 	? { isAuthenticated: true, user }
 	: { isAuthenticated: false, user: null };
 
-const authReducer = (state = iniialState, action) => {
+const authReducer = (state = initialState, action) => {
 	switch (action.type) {
 		// case USER_LOADING:
 		// 	return {
@@ -57,10 +57,10 @@ const authReducer = (state = iniialState, action) => {
 				...state,
 				user: {
 					username: 'Account',
+					token: null,
 				},
-				userLoading: false,
+				// userLoading: false,
 				isAuthenticated: false,
-				token: null,
 			};
 		default:
 			return state;

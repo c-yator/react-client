@@ -4,6 +4,7 @@ import {
 	REMOVE_FROM_CART,
 	DECREASE_QUANTITY,
 	GET_SUBTOTAL,
+	CLEAR_CART,
 } from '../types';
 
 const iniialState = {
@@ -26,6 +27,14 @@ const cartReducer = (state = iniialState, action) => {
 			return {
 				...state,
 				cart: payload,
+			};
+		case CLEAR_CART:
+			return {
+				...state,
+				cart: [],
+				subtotal: 0,
+				deliveryFees: null,
+				total: 0,
 			};
 		case INCREASE_QUANTITY:
 			return {

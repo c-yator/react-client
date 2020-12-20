@@ -1,4 +1,3 @@
-// import instance from '../../config/axiosConfig';
 import { toast } from 'react-toastify';
 import {
 	REFRESH_TOKEN_SUCCESS,
@@ -6,33 +5,25 @@ import {
 	REGISTER_SUCCESS,
 	// FETCH_USER_SUCCESS,
 	LOGOUT_SUCCESS,
+	CLEAR_CART,
 	// USER_LOADING,
 	// USER_LOADED,
 } from '../types';
 import authService from '../../services/authService';
-// import { setResponse } from '../actions/responseActions';
 
 export const register = (newUser) => async (dispatch) => {
 	try {
 		const user = await authService.register(newUser);
 		console.log('register user', user);
-
-		// const res = await instance.post('auth/register', { ...newUser });
-		// console.log('register', res);
-		// const user = res.data;
-		// localStorage.setItem('user', user);
 		dispatch({
 			type: REGISTER_SUCCESS,
 			payload: { user },
 		});
 	} catch (error) {
 		console.log('register error response', error.response);
-		// const errorId = 'register error response';
 		const message =
 			error.response?.data?.message || error.message || error.toString();
-
 		toast.error(message);
-		// dispatch(setResponse({ errorId, message }));
 	}
 };
 
@@ -40,23 +31,15 @@ export const login = (credentials) => async (dispatch) => {
 	try {
 		const user = await authService.login(credentials);
 		console.log('login user', user);
-
-		// const res = await instance.post('auth/login', { ...credentials });
-		// console.log('login', res.data);
-		// const { user } = res.data;
-		// console.log(user);
-		// localStorage.setItem('user', user);
 		dispatch({
 			type: LOGIN_SUCCESS,
 			payload: { user },
 		});
 	} catch (error) {
 		console.log('login error response', error.response);
-		// const errorId = 'login error response';
 		const message =
 			error.response?.data?.message || error.message || error.toString();
 		toast.error(message);
-		// dispatch(setResponse({ errorId, message }));
 	}
 };
 
@@ -64,10 +47,6 @@ export const refresh = () => async (dispatch) => {
 	try {
 		const user = await authService.refresh();
 		console.log('refresh user', user);
-
-		// const res = await instance.post('auth/refresh-token');
-		// console.log('refresh', res.data);
-
 		dispatch({
 			type: REFRESH_TOKEN_SUCCESS,
 			payload: { user },
@@ -76,9 +55,7 @@ export const refresh = () => async (dispatch) => {
 		console.log('refresh error response', error.response);
 		const message =
 			error.response?.data?.message || error.message || error.toString();
-		// console.log(message);
 		toast.error(message);
-		// dispatch(setResponse(message));
 	}
 };
 
@@ -112,20 +89,18 @@ export const logout = (history) => async (dispatch) => {
 		console.log('logout response status', status);
 
 		if (status === 204) {
-			console.log(1);
 			dispatch({
 				type: LOGOUT_SUCCESS,
 			});
-
+			dispatch({
+				type: CLEAR_CART,
+			});
 			history.push('/');
 		}
 	} catch (error) {
 		console.log('logout error response', error.response);
 		const message =
 			error.response?.data?.message || error.message || error.toString();
-		console.log(message);
 		toast.error(message);
-		// dispatch(setResponse(message));
-		console.log(2);
 	}
 };

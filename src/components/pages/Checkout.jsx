@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import {
 	Row,
@@ -9,7 +9,6 @@ import {
 	Collapse,
 	Button,
 } from 'reactstrap';
-// import Accordion from '../partials/Accordion';
 import OrderSummary from '../partials/OrderSummary';
 import AddressForm from '../partials/AddressForm';
 import PaymentForm from '../partials/PaymentForm';
@@ -20,9 +19,20 @@ function Checkout() {
 	const { address } = useSelector((state) => state.userState);
 
 	const [addressIsOpen, setAddressIsOpen] = useState(true);
-	const [paymentIsOpen, setPaymentIsOpen] = useState(
-		Object.keys(address).length > 0 ? true : false
-	);
+	const [paymentIsOpen, setPaymentIsOpen] = useState(null);
+	const [isAddressComplete, setIsAddressComplete] = useState(null);
+
+	const addressRef = useRef(null);
+
+	useEffect(() => {
+		Object.keys(address).length > 0
+			? setIsAddressComplete(true)
+			: setIsAddressComplete(false);
+	}, [address]);
+
+	useEffect(() => {
+		isAddressComplete ? setPaymentIsOpen(true) : setPaymentIsOpen(false);
+	}, [isAddressComplete]);
 
 	const toggleAddress = () => setAddressIsOpen(!addressIsOpen);
 	const togglePayment = () => setPaymentIsOpen(!paymentIsOpen);
@@ -36,10 +46,10 @@ function Checkout() {
 		county,
 		town,
 	} = address;
+
 	return (
 		<div className="container py-3">
 			<h5>Checkout</h5>
-
 			<Row>
 				<Col xs={{ size: 12, order: 2 }} md={{ size: 7, order: 1 }}>
 					<Card>
@@ -47,7 +57,7 @@ function Checkout() {
 							<Button color="link" onClick={toggleAddress}>
 								1. DELIVERY ADDRESS
 							</Button>
-							{Object.keys(address).length > 0 && (
+							{isAddressComplete && (
 								<span>
 									<IoMdCheckmarkCircleOutline />
 									completed
@@ -55,8 +65,8 @@ function Checkout() {
 							)}
 						</CardHeader>
 						<Collapse isOpen={addressIsOpen}>
-							<CardBody>
-								{Object.keys(address).length > 0 ? (
+							<CardBody innerRef={addressRef}>
+								{isAddressComplete ? (
 									<div>
 										<div>First Name: {firstName}</div>
 										<div>Last Name: {lastName}</div>
@@ -68,7 +78,13 @@ function Checkout() {
 										<div>County: {county}</div>
 										<div>Town: {town}</div>
 										<div>
-											<Button className="px-0" color="link">
+											<Button
+												className="px-0"
+												color="link"
+												onClick={() => {
+													setIsAddressComplete(false);
+												}}
+											>
 												<span>
 													<IoMdCreate />
 													Edit
@@ -77,12 +93,13 @@ function Checkout() {
 										</div>
 									</div>
 								) : (
-									<AddressForm />
+									<AddressForm
+										onComplete={(value) => setPaymentIsOpen(value)}
+									/>
 								)}
 							</CardBody>
 						</Collapse>
 					</Card>
-
 					<Card>
 						<CardHeader>
 							<Button color="link" onClick={togglePayment}>
