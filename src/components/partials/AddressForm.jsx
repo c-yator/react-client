@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
 	Form,
 	FormGroup,
@@ -16,7 +16,10 @@ import { useForm } from 'react-hook-form';
 import { setUserAddress } from '../../redux/actions/userActions';
 
 function AddressForm({ onComplete }) {
-	const { register, handleSubmit, errors } = useForm();
+	const { address } = useSelector((state) => state.userState);
+	const { register, handleSubmit, errors } = useForm({
+		defaultValues: address,
+	});
 	const dispatch = useDispatch();
 	const onSubmit = (data) => {
 		console.log('clicked');

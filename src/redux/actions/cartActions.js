@@ -3,9 +3,9 @@ import {
 	REMOVE_FROM_CART,
 	INCREASE_QUANTITY,
 	DECREASE_QUANTITY,
-	GET_SUBTOTAL,
 } from '../types';
 import { toast } from 'react-toastify';
+
 export const addToCart = (product) => (dispatch, getState) => {
 	try {
 		const { cart } = getState().cartState;
@@ -61,7 +61,7 @@ export const decreaseQuantity = (productId) => (dispatch, getState) => {
 
 	const updated = cart.map((product) => {
 		if (product.id === productId) {
-			product.quantity > 0 && product.quantity--;
+			product.quantity > 1 && product.quantity--;
 		}
 		return product;
 	});
@@ -69,17 +69,5 @@ export const decreaseQuantity = (productId) => (dispatch, getState) => {
 	dispatch({
 		type: DECREASE_QUANTITY,
 		payload: updated,
-	});
-};
-
-export const getSubtotal = () => (dispatch, getState) => {
-	const { cart } = getState().cartState;
-	const subtotal = cart.reduce(
-		(total, { price, quantity }) => total + price * quantity,
-		0
-	);
-	dispatch({
-		type: GET_SUBTOTAL,
-		payload: subtotal,
 	});
 };

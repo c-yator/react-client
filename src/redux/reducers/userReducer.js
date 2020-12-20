@@ -2,8 +2,6 @@ import { SET_USER_ADDRESS } from '../types';
 
 const initialState = {
 	address: {},
-	favorites: {},
-	previousOrders: [],
 };
 
 const userReducer = (state = initialState, action) => {

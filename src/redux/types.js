@@ -28,9 +28,9 @@ export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const INCREASE_QUANTITY = 'INCREASE_QUANTITY';
 export const DECREASE_QUANTITY = 'DECREASE_QUANTITY';
-export const GET_SUBTOTAL = 'GET_SUBTOTAL';
-export const GET_DELIVERY_FEES = 'GET_DELIVERY_FEES ';
-export const GET_TOTAL = 'GET_TOTAL';
+// export const GET_SUBTOTAL = 'GET_SUBTOTAL';
+// export const GET_DELIVERY_FEES = 'GET_DELIVERY_FEES ';
+// export const GET_TOTAL = 'GET_TOTAL';
 
 //favorites
 export const ADD_TO_FAVORITES = 'ADD_TO_FAVORITES';

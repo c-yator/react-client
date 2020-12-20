@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
 	Row,
@@ -12,14 +12,13 @@ import {
 	Media,
 } from 'reactstrap';
 
-import { getSubtotal } from '../../redux/actions/cartActions';
-
 function OrderSummary() {
-	const { cart, subtotal } = useSelector((state) => state.cartState);
-	const dispatch = useDispatch();
-	useEffect(() => {
-		dispatch(getSubtotal());
-	}, [dispatch]);
+	const { cart } = useSelector((state) => state.cartState);
+
+	const subtotal = cart.reduce(
+		(total, { price, quantity }) => total + price * quantity,
+		0
+	);
 
 	const deliveryFees = 20;
 

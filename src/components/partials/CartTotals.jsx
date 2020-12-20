@@ -1,8 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Row, Col, ButtonGroup, Button } from 'reactstrap';
 
-function CartTotals({ cart, subtotal }) {
+function CartTotals() {
+	const { cart } = useSelector((state) => state.cartState);
+
+	const subtotal = cart.reduce(
+		(total, { price, quantity }) => total + price * quantity,
+		0
+	);
+
 	return (
 		<Row className="d-flex justify-content-end">
 			<Col md="6">
@@ -12,10 +20,10 @@ function CartTotals({ cart, subtotal }) {
 					</Col>
 				</Row>
 				<Row>
-					<Col xs="6">
+					<Col xs="4">
 						<div>Subtotal:</div>
 					</Col>
-					<Col className="d-flex flex-column align-items-end" xs="6">
+					<Col className="d-flex flex-column align-items-end" xs="8">
 						<div>KES.{subtotal}</div>
 
 						<div>

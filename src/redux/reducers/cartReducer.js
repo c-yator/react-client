@@ -3,15 +3,11 @@ import {
 	INCREASE_QUANTITY,
 	REMOVE_FROM_CART,
 	DECREASE_QUANTITY,
-	GET_SUBTOTAL,
 	CLEAR_CART,
 } from '../types';
 
 const iniialState = {
 	cart: [],
-	subtotal: 0,
-	deliveryFees: null,
-	total: 0,
 };
 
 const cartReducer = (state = iniialState, action) => {
@@ -46,11 +42,7 @@ const cartReducer = (state = iniialState, action) => {
 				...state,
 				cart: payload,
 			};
-		case GET_SUBTOTAL:
-			return {
-				...state,
-				subtotal: payload,
-			};
+
 		default:
 			return state;
 	}
