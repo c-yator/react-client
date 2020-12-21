@@ -8,6 +8,7 @@ import {
 	Input,
 	FormText,
 	FormFeedback,
+	Container,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -27,7 +28,7 @@ function Login() {
 		dispatch(login(values));
 	};
 	return (
-		<div className="container py-3 ">
+		<Container className="py-3 ">
 			<h5 className="font-weight-bold">Login</h5>
 
 			<Form onSubmit={handleSubmit(onSubmit)}>
@@ -72,7 +73,7 @@ function Login() {
 				</FormText>
 				<Button type="submit">Log in</Button>
 			</Form>
-		</div>
+		</Container>
 	);
 }
 

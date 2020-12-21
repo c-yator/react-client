@@ -17,9 +17,10 @@ import { setUserAddress } from '../../redux/actions/userActions';
 
 function AddressForm({ onComplete }) {
 	const { address } = useSelector((state) => state.userState);
-	const { register, handleSubmit, errors } = useForm({
+	const { register, handleSubmit, errors, watch } = useForm({
 		defaultValues: address,
 	});
+	const countyValue = watch('county');
 	const dispatch = useDispatch();
 	const onSubmit = (data) => {
 		console.log('clicked');
@@ -163,7 +164,6 @@ function AddressForm({ onComplete }) {
 					id="county"
 					innerRef={register({ required: 'please select your county' })}
 				>
-					<option value="">Select county</option>
 					<option value="Uasin Gishu">Uasin Gishu</option>
 				</Input>
 				<FormFeedback>{errors?.county && errors.county?.message}</FormFeedback>
@@ -177,9 +177,13 @@ function AddressForm({ onComplete }) {
 					id="town"
 					innerRef={register({ required: 'please select your town' })}
 				>
-					<option value="">Select town</option>
-					<option value="Eldoret East">Eldoret east</option>
-					<option value="Eldoret CBD">Eldoret CBD</option>
+					{countyValue === 'Uasin Gishu' && (
+						<>
+							<option value="">Select town</option>
+							<option value="Eldoret East">Eldoret east</option>
+							<option value="Eldoret CBD">Eldoret CBD</option>
+						</>
+					)}
 				</Input>
 				<FormFeedback>{errors?.town && errors.town?.message}</FormFeedback>
 			</FormGroup>
