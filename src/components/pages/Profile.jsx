@@ -61,7 +61,7 @@ function Profile() {
 								Change
 							</Button>
 							<Button className="px-0" color="link">
-								Make default
+								Make default address
 							</Button>
 						</CardFooter>
 					</Card>
