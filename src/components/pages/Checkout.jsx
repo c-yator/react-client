@@ -13,7 +13,7 @@ import OrderSummary from '../partials/OrderSummary';
 import AddressForm from '../partials/AddressForm';
 import PaymentForm from '../partials/PaymentForm';
 
-import { IoMdCheckmarkCircleOutline, IoMdCreate } from 'react-icons/io';
+import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
 
 function Checkout() {
 	const { address } = useSelector((state) => state.userState);
@@ -85,10 +85,7 @@ function Checkout() {
 													setIsAddressComplete(false);
 												}}
 											>
-												<span>
-													<IoMdCreate />
-													Edit
-												</span>
+												Change
 											</Button>
 										</div>
 									</div>

@@ -7,7 +7,12 @@ import {
 	Card,
 	CardBody,
 	Button,
+	Media,
 } from 'reactstrap';
+
+import mpesa from '../../images/mpesa.png';
+import card from '../../images/card.png';
+import paypal from '../../images/paypal.png';
 
 function PaymentForm() {
 	const [paymentMethod, setPaymentMethod] = useState('mpesa');
@@ -24,7 +29,13 @@ function PaymentForm() {
 							checked={paymentMethod === 'mpesa'}
 							onChange={(e) => setPaymentMethod(e.target.value)}
 						/>
-						Mpesa
+						<span>Mpesa</span>
+						<Media
+							style={{ maxWidth: '50px' }}
+							object
+							src={mpesa}
+							alt="mpesa logo"
+						/>
 					</Label>
 				</FormGroup>
 				<FormGroup check>
@@ -36,7 +47,14 @@ function PaymentForm() {
 							checked={paymentMethod === 'card'}
 							onChange={(e) => setPaymentMethod(e.target.value)}
 						/>
-						Debit/Credit Card
+						<span>Debit/Credit Card</span>
+
+						<Media
+							style={{ maxWidth: '50px' }}
+							object
+							src={card}
+							alt="mpesa logo"
+						/>
 					</Label>
 				</FormGroup>
 				<FormGroup check>
@@ -48,7 +66,14 @@ function PaymentForm() {
 							checked={paymentMethod === 'paypal'}
 							onChange={(e) => setPaymentMethod(e.target.value)}
 						/>
-						Paypal
+
+						<span>Paypal</span>
+						<Media
+							style={{ maxWidth: '50px' }}
+							object
+							src={paypal}
+							alt="mpesa logo"
+						/>
 					</Label>
 				</FormGroup>
 			</FormGroup>
