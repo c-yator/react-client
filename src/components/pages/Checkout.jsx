@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import {
+	Container,
 	Row,
 	Col,
 	Card,
@@ -14,6 +15,7 @@ import AddressForm from '../partials/AddressForm';
 import PaymentForm from '../partials/PaymentForm';
 
 import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
+import PageTitle from '../partials/PageTitle';
 
 function Checkout() {
 	const { address } = useSelector((state) => state.userState);
@@ -48,8 +50,8 @@ function Checkout() {
 	} = address;
 
 	return (
-		<div className="container py-3">
-			<h5>Checkout</h5>
+		<Container className="py-3">
+			<PageTitle name={'Checkout'} />
 			<Row>
 				<Col xs={{ size: 12, order: 2 }} md={{ size: 7, order: 1 }}>
 					<Card>
@@ -115,7 +117,7 @@ function Checkout() {
 					<OrderSummary />
 				</Col>
 			</Row>
-		</div>
+		</Container>
 	);
 }
 

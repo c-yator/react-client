@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Col, Row, Container } from 'reactstrap';
+import { Col, Container, Row } from 'reactstrap';
 import CartItems from '../partials/CartItems';
 import CartTotals from '../partials/CartTotals';
 

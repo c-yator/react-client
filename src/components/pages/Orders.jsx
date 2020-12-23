@@ -1,7 +1,12 @@
 import React from 'react';
+import PageTitle from '../partials/PageTitle';
 
 function Orders() {
-	return <div className='container py-3'>Orders</div>;
+	return (
+		<>
+			<PageTitle name={'Orders'} />
+		</>
+	);
 }
 
 export default Orders;

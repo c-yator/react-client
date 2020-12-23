@@ -21,11 +21,10 @@ import Cart from './components/pages/Cart';
 import Login from './components/pages/Login';
 import Register from './components/pages/Register';
 import Checkout from './components/pages/Checkout';
-import Orders from './components/pages/Orders';
-import Favorites from './components/pages/Favorites';
-import Profile from './components/pages/Profile';
 
 import { clearResponse } from './redux/actions/responseActions';
+import SideNav from './components/partials/SideNav';
+
 // import DisplayResponse from './components/partials/DisplayResponse';
 
 function App() {
@@ -39,7 +38,7 @@ function App() {
 	}, [history, dispatch]);
 
 	return (
-		<div className="app">
+		<div>
 			<InfoBar />
 			<Navbar />
 			<ToastContainer
@@ -54,9 +53,9 @@ function App() {
 				<Route path="/cart" component={Cart} />
 				<Route path="/login" component={Login} />
 				<Route path="/register" component={Register} />
-				<ProtectedRoute path="/orders" component={Orders} />
-				<ProtectedRoute path="/favorites" component={Favorites} />
-				<ProtectedRoute path="/profile" component={Profile} />
+				<ProtectedRoute path="/orders" component={SideNav} />
+				<ProtectedRoute path="/favorites" component={SideNav} />
+				<ProtectedRoute path="/profile" component={SideNav} />
 				<ProtectedRoute path="/checkout" component={Checkout} />
 
 				<Route component={Error} />

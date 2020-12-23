@@ -1,10 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Button, Container } from 'reactstrap';
+import { Button } from 'reactstrap';
 import { removeFromFavorites } from '../../redux/actions/favoritesActions';
 import { addToCart } from '../../redux/actions/cartActions';
 import { CLEAR_FAVORITES } from '../../redux/types';
+import PageTitle from '../partials/PageTitle';
 
 function Favorites() {
 	const { favorites } = useSelector((state) => state.favoritesState);
@@ -12,16 +13,13 @@ function Favorites() {
 	const history = useHistory();
 
 	return (
-		<Container className="py-3">
-			<h5 className="font-weight-bold">
-				<span>Favorites</span>
-				<Button
-					color="link"
-					onClick={() => dispatch({ type: CLEAR_FAVORITES })}
-				>
-					Clear Favorites
-				</Button>
-			</h5>
+		<>
+			<PageTitle name="Favorites" />
+
+			<Button color="link" onClick={() => dispatch({ type: CLEAR_FAVORITES })}>
+				Clear Favorites
+			</Button>
+
 			<div>
 				{favorites.map(({ id, name, price, priceType, quantity }) => (
 					<ul key={id}>
@@ -46,7 +44,7 @@ function Favorites() {
 					</ul>
 				))}
 			</div>
-		</Container>
+		</>
 	);
 }
 

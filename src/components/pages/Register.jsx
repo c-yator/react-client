@@ -15,6 +15,8 @@ import {
 import withRedirect from '../Hoc/withRedirect';
 
 import { register as registerUser } from '../../redux/actions/authActions';
+import PageTitle from '../partials/PageTitle';
+import Container from 'reactstrap/lib/Container';
 
 function Register() {
 	const { register, errors, handleSubmit } = useForm();
@@ -26,8 +28,8 @@ function Register() {
 	};
 
 	return (
-		<div className="container py-3 ">
-			<h5 className="font-weight-bold">Register</h5>
+		<Container className="py-3">
+			<PageTitle name="Register" />
 
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<FormGroup>
@@ -104,7 +106,7 @@ function Register() {
 				</FormText>
 				<Button type="submit">Register</Button>
 			</Form>
-		</div>
+		</Container>
 	);
 }
 

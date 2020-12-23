@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Landing from '../partials/Landing';
+import { Spinner, Container } from 'reactstrap';
 
+//actions
 import { fetchAllProducts } from '../../redux/actions/productActions';
 
+//partials
+import Landing from '../partials/Landing';
+import OffersCarousel from '../partials/OffersCarousel';
+import ProductsCarousel from '../partials/ProductsCarousel';
 import Newsletter from '../partials/Newsletter';
-
-import ProductsCarousel from '../products/ProductsCarousel';
-import OffersCarousel from '../products/OffersCarousel';
-
-import Spinner from 'reactstrap/lib/Spinner';
 
 function Home() {
 	const productState = useSelector((state) => state.productState);
@@ -23,9 +23,9 @@ function Home() {
 	}, [dispatch]);
 
 	return (
-		<div>
+		<div className="pb-3">
 			<Landing />
-			<div className="container">
+			<Container>
 				{isLoading ? (
 					<div className="d-flex justify-content-center py-5">
 						<Spinner />
@@ -52,7 +52,7 @@ function Home() {
 				<div className="py-5">
 					<Newsletter />
 				</div>
-			</div>
+			</Container>
 		</div>
 	);
 }

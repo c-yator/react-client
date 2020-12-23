@@ -1,10 +1,11 @@
 import React from 'react';
+import PageTitle from '../partials/PageTitle';
 
 function Error() {
 	return (
-		<div className='container py-3'>
-			<h1>404</h1>
-			<h2>Not Found</h2>
+		<div className="d-flex justify-content-center align-items-center">
+			<PageTitle name={'Error'} />
+			<div>404 Not found</div>
 		</div>
 	);
 }

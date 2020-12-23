@@ -17,6 +17,7 @@ import { useForm } from 'react-hook-form';
 import withRedirect from '../Hoc/withRedirect';
 //actions
 import { login } from '../../redux/actions/authActions';
+import PageTitle from '../partials/PageTitle';
 
 function Login() {
 	const { register, errors, handleSubmit } = useForm();
@@ -28,8 +29,8 @@ function Login() {
 		dispatch(login(values));
 	};
 	return (
-		<Container className="py-3 ">
-			<h5 className="font-weight-bold">Login</h5>
+		<Container className="py-3">
+			<PageTitle name="Login" />
 
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<FormGroup>
