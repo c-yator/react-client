@@ -23,7 +23,7 @@ function Home() {
 	}, [dispatch]);
 
 	return (
-		<div className="pb-3">
+		<div>
 			<Landing />
 			<Container>
 				{isLoading ? (
