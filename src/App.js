@@ -56,6 +56,7 @@ function App() {
 				<ProtectedRoute path="/orders" component={SideNav} />
 				<ProtectedRoute path="/favorites" component={SideNav} />
 				<ProtectedRoute path="/profile" component={SideNav} />
+				<ProtectedRoute path="/addresses" component={SideNav} />
 				<ProtectedRoute path="/checkout" component={Checkout} />
 
 				<Route component={Error} />
