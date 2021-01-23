@@ -9,7 +9,7 @@ import {
 	decreaseQuantity,
 } from '../../redux/actions/cartActions';
 
-function CartItems({ id, name, price, priceType, quantity }) {
+function CartItems({ id, name, price, priceType, quantity, image }) {
 	const dispatch = useDispatch();
 	return (
 		<Row className="py-3" key={id}>
@@ -18,7 +18,8 @@ function CartItems({ id, name, price, priceType, quantity }) {
 					<Media
 						style={{ maxHeight: '80px' }}
 						object
-						src={`https://source.unsplash.com/1600x900/?${name},'vegetables'`}
+						// src={`https://source.unsplash.com/1600x900/?${name},'vegetables'`}
+						src={image}
 						alt="Product image"
 						className="mr-2"
 					/>

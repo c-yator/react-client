@@ -29,14 +29,15 @@ function ProductTabPane({ categories }) {
 						<Row>
 							{allProducts
 								.filter((product) => product.category === category.name)
-								.map((product) => (
-									<Col key={product._id} sm="12" md="6" lg="4" xl="3">
+								.map(({ _id, name, price, priceType, image }) => (
+									<Col key={_id} sm="12" md="6" lg="4" xl="3">
 										<ProductCard
-											id={product._id}
-											name={product.name}
-											price={product.price}
-											priceType={product.priceType}
-											img={`https://source.unsplash.com/1600x900/?${product.name},'vegetables'`}
+											id={_id}
+											name={name}
+											price={price}
+											priceType={priceType}
+											image={`http://localhost:5000/api/products/image/${image}`}
+											// img={`https://source.unsplash.com/1600x900/?${product.name},'vegetables'`}
 										/>
 									</Col>
 								))}

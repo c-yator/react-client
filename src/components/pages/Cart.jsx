@@ -21,7 +21,7 @@ function Cart() {
 				</Col>
 			</Row>
 
-			{cart.map(({ id, name, price, priceType, quantity }) => (
+			{cart.map(({ id, name, price, priceType, quantity, image }) => (
 				<CartItems
 					key={id}
 					id={id}
@@ -29,6 +29,7 @@ function Cart() {
 					price={price}
 					priceType={priceType}
 					quantity={quantity}
+					image={image}
 				/>
 			))}
 

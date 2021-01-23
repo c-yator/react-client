@@ -17,7 +17,7 @@ import PaymentForm from '../partials/PaymentForm';
 import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
 import PageTitle from '../partials/PageTitle';
 
-function Checkout() {
+function Checkout({ location }) {
 	const { address } = useSelector((state) => state.userState);
 
 	const [addressIsOpen, setAddressIsOpen] = useState(true);

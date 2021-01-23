@@ -53,14 +53,15 @@ function ProductsCarousel() {
 					>
 						{allProducts
 							.filter((product) => product.category === category.name)
-							.map((product) => (
+							.map(({ _id, name, price, priceType, image }) => (
 								<ProductCard
-									key={product._id}
-									id={product._id}
-									name={product.name}
-									price={product.price}
-									priceType={product.priceType}
-									img={`https://source.unsplash.com/1600x900/?${product.name},'vegetables'`}
+									key={_id}
+									id={_id}
+									name={name}
+									price={price}
+									priceType={priceType}
+									image={`http://localhost:5000/api/products/image/${image}`}
+									// img={'https://source.unsplash.com/1600x900/?vegetables'}
 								/>
 							))}
 					</Carousel>

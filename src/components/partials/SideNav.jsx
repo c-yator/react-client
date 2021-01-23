@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import classnames from 'classnames';
@@ -21,9 +21,13 @@ import Addresses from '../pages/Addresses';
 import { logout } from '../../redux/actions/authActions';
 
 function SideNav({ history, location: { pathname } }) {
-	const [activeTab, setActiveTab] = useState(pathname);
+	const [activeTab, setActiveTab] = useState('/profile');
 
 	const dispatch = useDispatch();
+
+	useEffect(() => {
+		setActiveTab(pathname);
+	}, [pathname]);
 
 	const toggle = (tab) => {
 		if (activeTab !== tab) setActiveTab(tab);

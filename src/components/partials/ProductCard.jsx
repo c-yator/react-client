@@ -13,7 +13,7 @@ import { IoMdHeart } from 'react-icons/io';
 import { addToCart } from '../../redux/actions/cartActions';
 import { addToFavorites } from '../../redux/actions/favoritesActions';
 // const ProductCard = ({ name, price, priceType, img }) => {
-const ProductCard = ({ id, name, price, priceType, img }) => {
+const ProductCard = ({ id, name, price, priceType, image }) => {
 	const dispatch = useDispatch();
 
 	const product = {
@@ -21,7 +21,7 @@ const ProductCard = ({ id, name, price, priceType, img }) => {
 		name,
 		price,
 		priceType,
-		img,
+		image,
 	};
 
 	return (
@@ -30,7 +30,7 @@ const ProductCard = ({ id, name, price, priceType, img }) => {
 				<span className="text-capitalize font-weight-bold">{name}</span>
 				<span className="font-weight-bold float-right">{`KES ${price}(${priceType})`}</span>
 			</CardHeader>
-			<CardImg top width="100%" src={img} alt="img" />
+			<CardImg top width="100%" src={image} alt={name} />
 
 			<CardFooter className="p-0">
 				<ButtonGroup className="w-100">
