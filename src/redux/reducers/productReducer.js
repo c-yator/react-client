@@ -2,17 +2,17 @@ import { FETCH_ALL_PRODUCTS, FETCH_SINGLE_PRODUCT } from '../types';
 
 const iniialState = {
 	allProducts: [],
-	isLoading: true,
+	productIsLoading: true,
 	singleProduct: {},
 };
 
-const authReducer = (state = iniialState, action) => {
+const productReducer = (state = iniialState, action) => {
 	switch (action.type) {
 		case FETCH_ALL_PRODUCTS:
 			return {
 				...state,
 				allProducts: action.payload,
-				isLoading: false,
+				productIsLoading: false,
 			};
 
 		case FETCH_SINGLE_PRODUCT:
@@ -26,4 +26,4 @@ const authReducer = (state = iniialState, action) => {
 	}
 };
 
-export default authReducer;
+export default productReducer;

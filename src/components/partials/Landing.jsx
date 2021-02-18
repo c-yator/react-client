@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Row, Col, Button, Media } from 'reactstrap';
 import landing1 from '../../images/1.jpeg';
 
@@ -21,10 +22,12 @@ function Landing() {
 								possimus numquam necessitatibus?
 							</p>
 
-							<Button outline color="light">
+							<Button outline color="light" tag={Link} to="/about">
 								learn more...
 							</Button>
-							<Button className="mx-3">Shop</Button>
+							<Button tag={Link} to="/shop" className="mx-3">
+								Shop
+							</Button>
 						</div>
 					</Col>
 					<Col lg="6" className="d-none d-lg-flex justify-content-lg-center">

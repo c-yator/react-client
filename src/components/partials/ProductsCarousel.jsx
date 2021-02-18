@@ -5,8 +5,6 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ProductCard from './ProductCard';
 
-import categories from '../../config/categories';
-
 function ProductsCarousel() {
 	const productState = useSelector((state) => state.productState);
 	const { allProducts } = productState;
@@ -35,38 +33,39 @@ function ProductsCarousel() {
 
 	return (
 		<div>
-			{categories.map((category) => (
-				<div key={category.id}>
-					<div className="d-flex justify-content-between">
-						<h6 className="font-weight-bold text-capitalize">
-							{category.name}
-						</h6>
-						<span>
-							<Link to="/shop">see all</Link>
-						</span>
+			{Array.from(new Set(allProducts.map(({ category }) => category))).map(
+				(category, index) => (
+					<div key={index}>
+						<div className="d-flex justify-content-between">
+							<h6 className="font-weight-bold text-capitalize">{category}</h6>
+							<span>
+								<Link to={{ pathname: '/shop', state: { from: category } }}>
+									see all
+								</Link>
+							</span>
+						</div>
+						<Carousel
+							removeArrowOnDeviceType={['md', 'sm']}
+							infinite
+							partialVisible={true}
+							responsive={responsive}
+						>
+							{allProducts
+								.filter((product) => product.category === category)
+								.map(({ _id, name, price, priceType, image }) => (
+									<ProductCard
+										key={_id}
+										id={_id}
+										name={name}
+										price={price}
+										priceType={priceType}
+										image={image}
+									/>
+								))}
+						</Carousel>
 					</div>
-					<Carousel
-						removeArrowOnDeviceType={['md', 'sm']}
-						infinite
-						partialVisible={true}
-						responsive={responsive}
-					>
-						{allProducts
-							.filter((product) => product.category === category.name)
-							.map(({ _id, name, price, priceType, image }) => (
-								<ProductCard
-									key={_id}
-									id={_id}
-									name={name}
-									price={price}
-									priceType={priceType}
-									image={`http://localhost:5000/api/products/image/${image}`}
-									// img={'https://source.unsplash.com/1600x900/?vegetables'}
-								/>
-							))}
-					</Carousel>
-				</div>
-			))}
+				)
+			)}
 		</div>
 	);
 }

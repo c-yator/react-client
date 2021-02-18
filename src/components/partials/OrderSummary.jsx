@@ -11,6 +11,7 @@ import {
 	Button,
 	Media,
 } from 'reactstrap';
+import { getImage } from './../../config/getImage';
 
 function OrderSummary() {
 	const { cart } = useSelector((state) => state.cartState);
@@ -29,14 +30,14 @@ function OrderSummary() {
 			<Card>
 				<CardHeader>Order Summary</CardHeader>
 				<CardBody className="py-3">
-					{cart.map(({ id, name, price, priceType, quantity }) => (
+					{cart.map(({ id, name, price, priceType, quantity, image }) => (
 						<Row className="py-2" key={id}>
 							<Col>
 								<div className="d-flex">
 									<Media
 										style={{ maxHeight: '80px' }}
 										object
-										src={`https://source.unsplash.com/1600x900/?vegetables`}
+										src={getImage(image)}
 										alt="Product image"
 										className="mr-2"
 									/>

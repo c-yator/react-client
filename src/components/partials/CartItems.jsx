@@ -8,6 +8,7 @@ import {
 	increaseQuantity,
 	decreaseQuantity,
 } from '../../redux/actions/cartActions';
+import { getImage } from './../../config/getImage';
 
 function CartItems({ id, name, price, priceType, quantity, image }) {
 	const dispatch = useDispatch();
@@ -18,8 +19,7 @@ function CartItems({ id, name, price, priceType, quantity, image }) {
 					<Media
 						style={{ maxHeight: '80px' }}
 						object
-						// src={`https://source.unsplash.com/1600x900/?${name},'vegetables'`}
-						src={image}
+						src={getImage(image)}
 						alt="Product image"
 						className="mr-2"
 					/>

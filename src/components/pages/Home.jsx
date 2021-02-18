@@ -5,6 +5,7 @@ import { Spinner, Container } from 'reactstrap';
 
 //actions
 import { fetchAllProducts } from '../../redux/actions/productActions';
+import { fetchAllOffers } from '../../redux/actions/offerActions';
 
 //partials
 import Landing from '../partials/Landing';
@@ -14,19 +15,23 @@ import Newsletter from '../partials/Newsletter';
 
 function Home() {
 	const productState = useSelector((state) => state.productState);
-
+	const offerState = useSelector((state) => state.offerState);
 	const dispatch = useDispatch();
-	const { isLoading } = productState;
+	const { productIsLoading } = productState;
+	const { offerIsLoading } = offerState;
 
 	useEffect(() => {
 		dispatch(fetchAllProducts());
+	}, [dispatch]);
+	useEffect(() => {
+		dispatch(fetchAllOffers());
 	}, [dispatch]);
 
 	return (
 		<div>
 			<Landing />
 			<Container>
-				{isLoading ? (
+				{productIsLoading && offerIsLoading ? (
 					<div className="d-flex justify-content-center py-5">
 						<Spinner />
 					</div>
@@ -36,7 +41,7 @@ function Home() {
 							<div className="d-flex justify-content-between">
 								<h5 className="font-weight-bold">Special Offers</h5>
 								<span>
-									<Link to="/shop">see all</Link>
+									<Link to="/offers">see all</Link>
 								</span>
 							</div>
 

@@ -4,7 +4,7 @@ import { Slide, ToastContainer } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 
 import 'react-toastify/dist/ReactToastify.css';
-import './App.css';
+import './App.scss';
 
 //partials
 import InfoBar from './components/partials/InfoBar';
@@ -17,6 +17,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import Error from './components/pages/Error';
 import Home from './components/pages/Home';
 import Shop from './components/pages/Shop';
+import Offers from './components/pages/Offers';
 import Cart from './components/pages/Cart';
 import Login from './components/pages/Login';
 import Register from './components/pages/Register';
@@ -50,6 +51,7 @@ function App() {
 			<Switch>
 				<Route exact path="/" component={Home} />
 				<Route path="/shop" component={Shop} />
+				<Route path="/offers" component={Offers} />
 				<Route path="/cart" component={Cart} />
 				<Route path="/login" component={Login} />
 				<Route path="/register" component={Register} />

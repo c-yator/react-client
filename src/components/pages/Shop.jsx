@@ -1,12 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { TabContent, Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
+import { Container, Spinner } from 'reactstrap';
 import ProductTabPane from '../partials/ProductTabPane';
-import categories from '../../config/categories';
-import Container from 'reactstrap/lib/Container';
 
-function Shop() {
-	const [activeTab, setActiveTab] = useState('1');
+import { fetchAllProducts } from '../../redux/actions/productActions';
+import useLocalStorage from '../partials/custom_hooks/useLocalStorage';
+
+function Shop({ location: { state } }) {
+	const productState = useSelector((state) => state.productState);
+	const [activeTab, setActiveTab] = useLocalStorage('category', 'veggies');
+	const { allProducts, productIsLoading } = productState;
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(fetchAllProducts());
+	}, [dispatch, activeTab]);
+
+	// useEffect(() => {
+	// 	state && setActiveTab(state.from);
+	// }, [state, setActiveTab]);
 
 	const toggle = (tab) => {
 		if (activeTab !== tab) setActiveTab(tab);
@@ -14,23 +28,33 @@ function Shop() {
 
 	return (
 		<Container className="py-3">
-			<Nav tabs>
-				{categories.map((category) => (
-					<NavItem key={category.id}>
-						<NavLink
-							className={classnames({ active: activeTab === category.id })}
-							onClick={() => {
-								toggle(category.id);
-							}}
-						>
-							<span className="text-capitalize">{category.name}</span>
-						</NavLink>
-					</NavItem>
-				))}
-			</Nav>
-			<TabContent activeTab={activeTab}>
-				<ProductTabPane categories={categories} />
-			</TabContent>
+			{productIsLoading ? (
+				<div className="d-flex justify-content-center py-5">
+					<Spinner />
+				</div>
+			) : (
+				<>
+					<Nav tabs>
+						{Array.from(
+							new Set(allProducts.map(({ category }) => category))
+						).map((category, index) => (
+							<NavItem key={index}>
+								<NavLink
+									className={classnames({ active: activeTab === category })}
+									onClick={() => {
+										toggle(category);
+									}}
+								>
+									<span className="text-capitalize">{category}</span>
+								</NavLink>
+							</NavItem>
+						))}
+					</Nav>
+					<TabContent activeTab={activeTab}>
+						<ProductTabPane allProducts={allProducts} />
+					</TabContent>
+				</>
+			)}
 		</Container>
 	);
 }

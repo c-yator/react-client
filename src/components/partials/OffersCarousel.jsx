@@ -6,8 +6,9 @@ import { useSelector } from 'react-redux';
 import ProductCard from './ProductCard';
 
 function OffersCarousel() {
-	const productState = useSelector((state) => state.productState);
-	const { allProducts } = productState;
+	const offerState = useSelector((state) => state.offerState);
+	const { allOffers } = offerState;
+
 	const responsive = {
 		lg: {
 			breakpoint: { max: 4000, min: 768 },
@@ -27,19 +28,16 @@ function OffersCarousel() {
 			autoPlay
 			containerClass="py-3"
 		>
-			{allProducts
-				.filter((product) => product.category === 'offer')
-				.map(({ _id, name, price, priceType, image }) => (
-					<ProductCard
-						key={_id}
-						id={_id}
-						name={name}
-						price={price}
-						priceType={priceType}
-						image={`http://localhost:5000/api/products/image/${image}`}
-						// img={'https://source.unsplash.com/1600x900/?vegetables'}
-					/>
-				))}
+			{allOffers.map(({ _id, name, price, priceType, image }) => (
+				<ProductCard
+					key={_id}
+					id={_id}
+					name={name}
+					price={price}
+					priceType={priceType}
+					image={image}
+				/>
+			))}
 		</Carousel>
 	);
 }

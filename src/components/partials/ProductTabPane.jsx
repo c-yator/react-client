@@ -1,34 +1,16 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-
-import { TabPane, Row, Col, Spinner } from 'reactstrap';
+import React from 'react';
+import { TabPane, Row, Col } from 'reactstrap';
 import ProductCard from './ProductCard';
 
-import { fetchAllProducts } from '../../redux/actions/productActions';
-
-function ProductTabPane({ categories }) {
-	const productState = useSelector((state) => state.productState);
-
-	const dispatch = useDispatch();
-
-	const { allProducts, isLoading } = productState;
-
-	useEffect(() => {
-		dispatch(fetchAllProducts());
-	}, [dispatch]);
-
+function ProductTabPane({ allProducts }) {
 	return (
 		<>
-			{isLoading ? (
-				<div className="d-flex justify-content-center py-5">
-					<Spinner />
-				</div>
-			) : (
-				categories.map((category) => (
-					<TabPane key={category.id} tabId={category.id}>
+			{Array.from(new Set(allProducts.map(({ category }) => category))).map(
+				(category, index) => (
+					<TabPane key={index} tabId={category}>
 						<Row>
 							{allProducts
-								.filter((product) => product.category === category.name)
+								.filter((product) => product.category === category)
 								.map(({ _id, name, price, priceType, image }) => (
 									<Col key={_id} sm="12" md="6" lg="4" xl="3">
 										<ProductCard
@@ -36,14 +18,13 @@ function ProductTabPane({ categories }) {
 											name={name}
 											price={price}
 											priceType={priceType}
-											image={`http://localhost:5000/api/products/image/${image}`}
-											// img={`https://source.unsplash.com/1600x900/?${product.name},'vegetables'`}
+											image={image}
 										/>
 									</Col>
 								))}
 						</Row>
 					</TabPane>
-				))
+				)
 			)}
 		</>
 	);

@@ -5,6 +5,7 @@ function Orders() {
 	return (
 		<>
 			<PageTitle name={'Orders'} />
+			<div>You do not have any orders</div>
 		</>
 	);
 }

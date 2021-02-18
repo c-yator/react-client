@@ -10,9 +10,12 @@ import {
 } from 'reactstrap';
 import { IoMdHeart } from 'react-icons/io';
 
+//actions
 import { addToCart } from '../../redux/actions/cartActions';
 import { addToFavorites } from '../../redux/actions/favoritesActions';
-// const ProductCard = ({ name, price, priceType, img }) => {
+
+import { getImage } from './../../config/getImage';
+
 const ProductCard = ({ id, name, price, priceType, image }) => {
 	const dispatch = useDispatch();
 
@@ -30,7 +33,7 @@ const ProductCard = ({ id, name, price, priceType, image }) => {
 				<span className="text-capitalize font-weight-bold">{name}</span>
 				<span className="font-weight-bold float-right">{`KES ${price}(${priceType})`}</span>
 			</CardHeader>
-			<CardImg top width="100%" src={image} alt={name} />
+			<CardImg top width="100%" src={getImage(image)} alt={name} />
 
 			<CardFooter className="p-0">
 				<ButtonGroup className="w-100">

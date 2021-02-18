@@ -4,6 +4,9 @@
 	box-sizing: border-box;
 }
 
+@import './scss/_custom.scss';
+@import '~bootstrap/scss/bootstrap';
+
 html {
 	height: 100%;
 }

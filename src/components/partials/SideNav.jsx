@@ -8,7 +8,6 @@ import {
 	Row,
 	TabContent,
 	TabPane,
-	Card,
 	ListGroup,
 	ListGroupItem,
 } from 'reactstrap';
@@ -36,60 +35,64 @@ function SideNav({ history, location: { pathname } }) {
 	return (
 		<Container className="py-3">
 			<Row>
-				<Col xs="4" className="py-5">
-					<Card>
-						<ListGroup>
-							<ListGroupItem
-								className={classnames({ active: activeTab === '/profile' })}
-								tag="a"
-								onClick={() => {
-									toggle('/profile');
-								}}
-							>
-								Profile
-							</ListGroupItem>
+				<Col xs="3" className="py-5">
+					<ListGroup flush>
+						<ListGroupItem
+							action
+							className={classnames({ active: activeTab === '/profile' })}
+							tag="button"
+							onClick={() => {
+								toggle('/profile');
+							}}
+						>
+							Profile
+						</ListGroupItem>
 
-							<ListGroupItem
-								tag="a"
-								className={classnames({ active: activeTab === '/orders' })}
-								onClick={() => {
-									toggle('/orders');
-								}}
-							>
-								Orders
-							</ListGroupItem>
+						<ListGroupItem
+							action
+							tag="button"
+							className={classnames({ active: activeTab === '/orders' })}
+							onClick={() => {
+								toggle('/orders');
+							}}
+						>
+							Orders
+						</ListGroupItem>
 
-							<ListGroupItem
-								tag="a"
-								className={classnames({ active: activeTab === '/favorites' })}
-								onClick={() => {
-									toggle('/favorites');
-								}}
-							>
-								Favorites
-							</ListGroupItem>
+						<ListGroupItem
+							action
+							tag="button"
+							className={classnames({ active: activeTab === '/favorites' })}
+							onClick={() => {
+								toggle('/favorites');
+							}}
+						>
+							Favorites
+						</ListGroupItem>
 
-							<ListGroupItem
-								tag="a"
-								className={classnames({ active: activeTab === '/addresses' })}
-								onClick={() => {
-									toggle('/addresses');
-								}}
-							>
-								Addresses
-							</ListGroupItem>
-							<ListGroupItem
-								tag="a"
-								onClick={() => {
-									dispatch(logout(history));
-								}}
-							>
-								Logout
-							</ListGroupItem>
-						</ListGroup>
-					</Card>
+						<ListGroupItem
+							action
+							tag="button"
+							className={classnames({ active: activeTab === '/addresses' })}
+							onClick={() => {
+								toggle('/addresses');
+							}}
+						>
+							Addresses
+						</ListGroupItem>
+						<ListGroupItem
+							tag="button"
+							color="dark"
+							className="text-capitalize font-weight-bold"
+							onClick={() => {
+								dispatch(logout(history));
+							}}
+						>
+							Logout
+						</ListGroupItem>
+					</ListGroup>
 				</Col>
-				<Col xs="8">
+				<Col xs="9">
 					<TabContent activeTab={activeTab}>
 						<TabPane tabId={'/profile'}>
 							<Profile />
