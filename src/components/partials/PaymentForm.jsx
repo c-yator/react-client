@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
 	Form,
 	FormGroup,
@@ -13,10 +14,18 @@ import {
 import mpesa from '../../images/mpesa.png';
 import card from '../../images/card.png';
 import paypal from '../../images/paypal.png';
+import Totals from './Totals';
+
+//actions
+import { mobilePaymentRequest } from '../../redux/actions/mobilePaymentActions';
 
 function PaymentForm() {
 	const [paymentMethod, setPaymentMethod] = useState('mpesa');
 
+	const { cart } = useSelector((state) => state.cartState);
+	const { address } = useSelector((state) => state.userState);
+
+	const dispatch = useDispatch();
 	return (
 		<Form>
 			<FormGroup tag="fieldset">
@@ -72,18 +81,38 @@ function PaymentForm() {
 							style={{ maxWidth: '50px' }}
 							object
 							src={paypal}
-							alt="mpesa logo"
+							alt="paypal logo"
 						/>
 					</Label>
 				</FormGroup>
 			</FormGroup>
 			<Card>
-				<CardBody className="py-5">
-					{paymentMethod === 'mpesa' && <div>Mpesa</div>}
+				<CardBody>
+					{paymentMethod === 'mpesa' && (
+						<>
+							<Totals
+								render={(total) => (
+									<Button
+										className="w-100 mt-3"
+										onClick={() =>
+											dispatch(
+												mobilePaymentRequest(
+													total,
+													`254${address.mobilePhoneNumber}`,
+													cart.map((item) => item.id)
+												)
+											)
+										}
+									>
+										Pay
+									</Button>
+								)}
+							/>
+						</>
+					)}
 					{paymentMethod === 'card' && <div>Debit/Credit card</div>}
 					{paymentMethod === 'paypal' && <div>Paypal</div>}
 				</CardBody>
-				<Button className="w-100">Pay</Button>
 			</Card>
 		</Form>
 	);

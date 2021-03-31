@@ -52,13 +52,13 @@ function Profile() {
 				<CardHeader className="font-weight-bold">Newsletter</CardHeader>
 				<CardBody>
 					{
-						<div className="d-flex justify-content-between align-items-center">
+						<div className="d-flex flex-column flex-md-row  justify-content-md-between align-items-md-center">
 							<span>
 								{isSubscribed === true
 									? 'You are subscribed to our newsletter'
 									: 'You are not subscribed to our newsletter'}
 							</span>
-							<Button color="primary">
+							<Button className="my-2" color="primary">
 								{isSubscribed === true ? 'Unsubscribe' : 'Subscribe'}
 							</Button>
 						</div>

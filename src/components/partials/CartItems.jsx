@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Row, Col, Button, Media, Input } from 'reactstrap';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
@@ -11,7 +11,13 @@ import {
 import { getImage } from './../../config/getImage';
 
 function CartItems({ id, name, price, priceType, quantity, image }) {
+	const input = useRef(null);
 	const dispatch = useDispatch();
+
+	useEffect(() => {
+		input.current.value = quantity;
+	}, [quantity]);
+
 	return (
 		<Row className="py-3" key={id}>
 			<Col xs="4" sm="6">
@@ -40,7 +46,12 @@ function CartItems({ id, name, price, priceType, quantity, image }) {
 			</Col>
 			<Col xs="6" sm="3" className="pr-0">
 				<div className="d-flex flex-wrap">
-					<Input className="w-50 mr-1" type="number" value={quantity} />
+					<Input
+						style={{ background: '#fff' }}
+						innerRef={input}
+						className="w-50 mr-1"
+						disabled
+					/>
 					<div className="d-flex flex-column py-1">
 						<MdKeyboardArrowUp onClick={() => dispatch(increaseQuantity(id))} />
 						<MdKeyboardArrowDown

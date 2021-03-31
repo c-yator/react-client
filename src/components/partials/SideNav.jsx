@@ -35,7 +35,7 @@ function SideNav({ history, location: { pathname } }) {
 	return (
 		<Container className="py-3">
 			<Row>
-				<Col xs="3" className="py-5">
+				<Col className="py-5 d-none d-md-block" md="4">
 					<ListGroup flush>
 						<ListGroupItem
 							action
@@ -92,7 +92,7 @@ function SideNav({ history, location: { pathname } }) {
 						</ListGroupItem>
 					</ListGroup>
 				</Col>
-				<Col xs="9">
+				<Col md="8">
 					<TabContent activeTab={activeTab}>
 						<TabPane tabId={'/profile'}>
 							<Profile />

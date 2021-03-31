@@ -23,7 +23,6 @@ function AddressForm({ onComplete }) {
 	const countyValue = watch('county');
 	const dispatch = useDispatch();
 	const onSubmit = (data) => {
-		console.log('clicked');
 		dispatch(setUserAddress(data));
 		onComplete(true);
 	};
@@ -79,7 +78,7 @@ function AddressForm({ onComplete }) {
 				</FormFeedback>
 			</FormGroup>
 			<FormGroup>
-				<Label for="mobilePhoneNumber1">Mobile phone number </Label>
+				<Label for="mobilePhoneNumber">Mobile phone number </Label>
 				<InputGroup>
 					<InputGroupAddon addonType="prepend">
 						<InputGroupText>+254</InputGroupText>
@@ -93,9 +92,9 @@ function AddressForm({ onComplete }) {
 						innerRef={register({
 							required: 'Mobile phone number is required',
 							maxLength: {
-								value: 10,
+								value: 9,
 								message:
-									'mobile phone number length must not exceed 10 characters',
+									'mobile phone number length must not exceed 9 characters',
 							},
 							minLength: {
 								value: 9,
@@ -125,9 +124,9 @@ function AddressForm({ onComplete }) {
 						placeholder="e.g 705495536 or 105495536"
 						innerRef={register({
 							maxLength: {
-								value: 10,
+								value: 9,
 								message:
-									'Alternate phone number length must not exceed 10 characters',
+									'Alternate phone number length must not exceed 9 characters',
 							},
 							minLength: {
 								value: 9,

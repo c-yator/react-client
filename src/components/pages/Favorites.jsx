@@ -39,9 +39,9 @@ function Favorites() {
 					<CardBody className="pt-0">
 						{favorites.map(
 							({ id, name, price, priceType, quantity, image }) => (
-								<Card className="my-3">
-									<Row key={id} className="py-2">
-										<Col>
+								<Card key={id} className="my-3">
+									<Row key={id} className="p-2">
+										<Col md="7">
 											<div className="d-flex">
 												<Media
 													style={{ maxHeight: '80px' }}
@@ -57,26 +57,33 @@ function Favorites() {
 												</div>
 											</div>
 										</Col>
-										<Col>
-											<Button
-												color="link"
-												onClick={() => dispatch(removeFromFavorites(id))}
-											>
-												Remove
-											</Button>
-										</Col>
-										<Col>
-											<Button
-												color="primary"
-												onClick={() => {
-													dispatch(
-														addToCart({ id, name, price, priceType, quantity })
-													);
-													history.push('/cart');
-												}}
-											>
-												Buy now
-											</Button>
+
+										<Col md="5" className="py-2">
+											<div className="d-flex flex-wrap-reverse justify-content-between">
+												<Button
+													color="link"
+													onClick={() => dispatch(removeFromFavorites(id))}
+												>
+													Remove
+												</Button>
+												<Button
+													color="primary"
+													onClick={() => {
+														dispatch(
+															addToCart({
+																id,
+																name,
+																price,
+																priceType,
+																quantity,
+															})
+														);
+														history.push('/cart');
+													}}
+												>
+													Buy now
+												</Button>
+											</div>
 										</Col>
 									</Row>
 								</Card>

@@ -12,18 +12,10 @@ import {
 	Media,
 } from 'reactstrap';
 import { getImage } from './../../config/getImage';
+import Totals from './Totals';
 
 function OrderSummary() {
 	const { cart } = useSelector((state) => state.cartState);
-
-	const subtotal = cart.reduce(
-		(total, { price, quantity }) => total + price * quantity,
-		0
-	);
-
-	const deliveryFees = 20;
-
-	const total = subtotal + deliveryFees;
 
 	return (
 		<div className="py-3 py-md-0">
@@ -53,27 +45,7 @@ function OrderSummary() {
 					))}
 
 					<hr />
-					<Row>
-						<Col>
-							<div className="d-flex justify-content-md-between">
-								<span>Subtotal:</span>
-								<span>{`KES.${subtotal}`}</span>
-							</div>
-							<div className="d-flex justify-content-md-between">
-								<span>Delivery Fees</span>
-								<span>{`KES.${deliveryFees}`}</span>
-							</div>
-						</Col>
-					</Row>
-					<hr />
-					<Row>
-						<Col>
-							<div className="d-flex justify-content-md-between font-weight-bold">
-								<span>Total:</span>
-								<span>{`KES.${total}`}</span>
-							</div>
-						</Col>
-					</Row>
+					<Totals cart={cart} />
 				</CardBody>
 				<CardFooter>
 					<Button tag={Link} to="/cart" className="w-100">
